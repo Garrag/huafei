@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据统计</title>
+</head>
+<body>
+    <table width="600px" border="1" cellspacing="0" cellpadding="0" style="text-align: center">
+        <tr>
+            <td>地址</td>
+            <td>活动名称</td>
+            <td>点击次数</td>
+        </tr>
+        <%for(var i=0; i<data.length; i++){%>
+        <tr>
+            <td><a href="http://lehoo.me/access/a/<%=data[i].id%>">http://lehoo.me/access/a/<%=data[i].id%></a></td>
+            <td><%=data[i].name%></td>
+            <td><%=data[i].num%></td>
+        </tr>
+        <%}%>
+    </table>
+</body>
+</html>

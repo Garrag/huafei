@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据统计</title>
+</head>
+<body>
+    <table width="400px" border="1" cellspacing="0" cellpadding="5" style="text-align: center">
+        <tr>
+            <td>参赛人名</td>
+            <td>被拉入活动人名</td>
+        </tr>
+        <%for(var i=0; i<data.length; i++){%>
+        <tr>
+            <td><%=data[i].l_name%></td>
+            <td><%=data[i].b_name%></td>
+        </tr>
+        <%}%>
+    </table>
+</body>
+</html>

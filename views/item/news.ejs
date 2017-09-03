@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Lehoo智能水杯新闻资讯</title>
+    <% include ./../gui/metaAndLink.ejs %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body class="all">
+<%- include('./../gui/header.ejs', {id:-100})%>
+<div class="jx-layout-center">
+
+    <h3  style="text-align: center"><%=title%></h3>
+    <p style="text-align: right"><%=date%></p>
+
+    <div id="content" style="margin-top: 50px">
+        <%-content%>
+    </div>
+    <nav>
+        <ul class="pager">
+            <li><a style="background-color: black;color: white" href="/news/pNews?id=<%=id%>">上一篇</a></li>
+            <li><a style="background-color: black;color: white" href="/news/nNews?id=<%=id%>">下一篇</a></li>
+        </ul>
+    </nav>
+</div>
+<% include ./../gui/foot.ejs%>
+
+<script>
+    var h = $('#content').height();
+    if(h < 100){
+        $('#content').height(600);
+    }
+</script>
+</body>
+</html>

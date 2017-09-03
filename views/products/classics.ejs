@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Lehoo产品详情</title>
+    <% include ./../gui/metaAndLink.ejs %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/swiper/idangerous.swiper.css">
+    <link rel="stylesheet" href="/swiper/animate.min.css"/>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style>
+        html, body {
+            position: relative;
+            height: 100%;
+        }
+
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            /*background: #fff;*/
+            /* Center slide text vertically */
+            /*display: -webkit-box;*/
+            /*display: -ms-flexbox;*/
+            /*display: -webkit-flex;*/
+            /*display: flex;*/
+            /*-webkit-box-pack: center;*/
+            /*-ms-flex-pack: center;*/
+            /*-webkit-justify-content: center;*/
+            /*justify-content: center;*/
+            /*-webkit-box-align: center;*/
+            /*-ms-flex-align: center;*/
+            /*-webkit-align-items: center;*/
+            /*align-items: center;*/
+        }
+
+        .pagination-1 {
+            position: absolute;
+            z-index: 20;
+            right: 10px;
+            top: 10px;
+        }
+
+        .swiper-pagination-switch {
+            display: block;
+            width: 8px;
+            height: 8px;
+            border-radius: 8px;
+            background: #555;
+            margin: 0 0px 5px;
+            opacity: 0.8;
+            border: 1px solid #fff;
+            cursor: pointer;
+        }
+
+        .swiper-active-switch {
+            background: #fff;
+        }
+    </style>
+</head>
+<body class="all">
+<!-- Swiper -->
+<%- include('./../gui/productHeader.ejs', {title:"经典款"}) %>
+<script src="/javascripts/checkBrowser.js"></script>
+<div class="swiper-container">
+    <div id="JxSwiper" class="swiper-wrapper">
+        <!--第一页-->
+        <section class="swiper-slide swiper-no-swiping" style="background: #000; position: relative">
+            <img id="ani" data-ani="animated fadeIn" src="/images/products/classics/1/text.png"
+                 style="margin: auto;position: absolute;top:10%; left: 0;right: 0;z-index: 3">
+            <img class="animated fadeIn" src="/images/products/classics/1/role.png"
+                 style="margin: auto;position: absolute; bottom: 0;left: 0;right: 0;width: auto;height: 40%;display: block">
+        </section>
+        <!--第二页-->
+        <section class="swiper-slide swiper-no-swiping" style="background: #000;position: relative">
+            <img id="ani" data-ani="animated fadeInRight" src="/images/products/classics/2/role.png"
+                 style="margin: auto;position: absolute; bottom: 0;right: 0;width: auto;height: 100%;display: block;">
+            <img id="ani" data-ani="animated fadeInLeft" src="/images/products/classics/2/text.png"
+                 style="margin: auto;position: absolute; left: 50px; top: 0; bottom: 0">
+        </section>
+        <!--第3页-->
+        <section class="swiper-slide swiper-no-swiping" style="background: #000;position: relative">
+            <img src="/images/products/classics/3/bg.png"
+                 style="width: auto;height: 100%;display: block;margin: auto;position: absolute;right: 0;left: 0;top: 0">
+            <img id="ani" data-ani="animated fadeInUp" src="/images/products/classics/3/role.png"
+                 style="margin: auto;position: absolute; left: 25%; top: 0; bottom: 0;width: auto;height: 150px;display: block">
+            <img id="ani" data-ani="animated fadeInRight" src="/images/products/classics/3/text.png"
+                 style="margin: auto;position: absolute; right: 10%; top: 0; bottom: 0">
+        </section>
+        <!--第4页-->
+        <section class="swiper-slide swiper-no-swiping" style="background: #FFF;position: relative">
+            <img src="/images/products/classics/4/bg.png"
+                 style="width: 100%;height: 100%;display: block;margin: auto;position: absolute;right: 0;left: 0;top: 0">
+            <img id="ani" data-ani="animated fadeIn" src="/images/products/classics/4/role.png"
+                 style="margin: auto;position: absolute; left: 25%;bottom: 5%;width: auto;height: 80%;display: block">
+            <img id="ani" data-ani="animated fadeInRight" src="/images/products/classics/4/text.png"
+                 style="margin: auto;position: absolute; right: 10%; top: 0; bottom: 0">
+        </section>
+        <!--第5页-->
+        <section class="swiper-slide swiper-no-swiping" style="background: #000;position: relative">
+            <img id="ani" data-ani="animated fadeIn" src="/images/products/classics/5/role.png"
+                 style="margin: auto;position: absolute; right:10%; top: 0; bottom: 0;width: auto;height: 80%;display: block">
+            <img id="ani" data-ani="animated fadeInLeft" data-over="true" src="/images/products/classics/5/text1.png"
+                 style="margin: auto;position: absolute; left: 10%; top: 0; bottom: 0">
+            <img id="ani" data-ani="animated fadeInUp" src="/images/products/classics/5/text2.png"
+                 style="margin: auto;position: absolute; left: 10%; top: 0; bottom: 0">
+        </section>
+        <!--第6页-->
+        <section class="swiper-slide swiper-no-swiping" style="background: #000;position: relative">
+            <img id="ani" data-ani="animated fadeIn" src="/images/products/classics/6/role1.png"
+                 style="margin: auto;position: absolute; right:0; left: 0; bottom: 5%;width: auto;height: 70%;display: block">
+            <img id="ani" data-ani="animated fadeInDown" src="/images/products/classics/6/text1.png"
+                 style="margin: auto;position: absolute; left: 0; right: 0; top: 5%;">
+            <img id="ani" data-ani="animated fadeInDown" data-close="1-" data-open="3-"
+                 src="/images/products/classics/6/text2.png"
+                 style="margin: auto;position: absolute; left: 0; right: 0; top: 5%;">
+            <img id="ani" data-ani="animated fadeIn" src="/images/products/classics/6/role2.png"
+                 style="margin: auto;position: absolute; right:0; left: 0; bottom: 5%;width: auto;height: 70%;display: block">
+            <img id="ani" data-ani="animated fadeInDown" data-close="2-3" data-open="5-"
+                 src="/images/products/classics/6/text3.png"
+                 style="margin: auto;position: absolute; left: 0; right: 0; top: 5%;">
+            <img id="ani" data-ani="animated fadeIn" src="/images/products/classics/6/role3.png"
+                 style="margin: auto;position: absolute; right:0; left: 0; bottom: 5%;width: auto;height: 70%;display: block">
+            <img id="ani" data-ani="animated fadeIn" data-open="7-" src="/images/products/classics/6/role4.png"
+                 style="margin: auto;position: absolute;  left: 30%; bottom: 5%;width: auto;height: 50%;display: block">
+            <img id="ani" data-ani="animated fadeIn" src="/images/products/classics/6/role5.png"
+                 style="margin: auto;position: absolute; right:30%; bottom: 5%;width: auto;height: 50%;display: block">
+            <img id="ani" data-ani="animated fadeInDown" data-close="4-5-6-7" data-open="9-"
+                 src="/images/products/classics/6/text4.png"
+                 style="margin: auto;position: absolute; left: 0; right: 0; top: 5%;">
+            <img id="ani" data-ani="animated fadeIn" src="/images/products/classics/6/role1.png"
+                 style="margin: auto;position: absolute; right:0; left: 0; bottom: 5%;width: auto;height: 70%;display: block">
+        </section>
+        <!--第7页-->
+        <section class="swiper-slide swiper-no-swiping" style="background: #000; position: relative">
+            <img id="ani" data-ani="animated slideInUp" src="/images/products/classics/7/role1.png"
+                 style="margin: auto;position: absolute; bottom: 0;left: 0;right: 0; width: auto;height:35%;display: block">
+            <img id="ani" data-ani="animated fadeInUp" src="/images/products/classics/7/text1.png"
+                 style="margin: auto;position: absolute;top:10%; left: 0;right: 0;z-index: 3">
+        </section>
+        <!--第8页-->
+        <section class="swiper-slide swiper-no-swiping" style="background: #000; position: relative">
+            <img id="ani" data-ani="animated slideInUp" data-open="1-" src="/images/products/classics/8/role1.png"
+                 style="margin: auto;position: absolute; bottom: 0;left: 0;right: 0;top: 0; width: auto;height:35%;display: block">
+            <img id="ani" data-ani="animated fadeInDown" src="/images/products/classics/8/text1.png"
+                 style="margin: auto;position: absolute;top:10%; left: 0;right: 0;z-index: 3">
+            <img id="ani" data-ani="animated slideInUp" data-close="0-" src="/images/products/classics/8/role2.png"
+                 style="margin: auto;position: absolute; bottom: 0;top: 0;left: 30%; width: auto;height:35%;display: block">
+            <img id="ani" data-ani="animated fadeInLeft" src="/images/products/classics/8/role3.png"
+                 style="margin: auto;position: absolute; bottom: 0;right: 30%;top: 0; width: auto;height:35%;display: block">
+        </section>
+    </div>
+    <div class="pagination-1"></div>
+    <div style="position: absolute; right: 10px; top: 20%; z-index: 21">
+        <img style="width: 30px; height: auto" src="/images/products/hint.gif">
+        <!--<canvas width="40px" height="200" id="jx-hint" style="border: white solid 1px"></canvas>-->
+    </div>
+</div>
+
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="/javascripts/jquery.mousewheel.min.js"></script>
+<!--<script src="/swiper/swiper.jquery.min.js"></script>-->
+<!--<script src="/swiper/swiper.animate1.0.2.min.js"></script>-->
+<script src="/swiper/idangerous.swiper.js"></script>
+
+<script src="/javascripts/state-machine.min.js"></script>
+<script src="/javascripts/JxSwiper.js"></script>
+
+<script>
+    $(function () {
+        var swiper = new Swiper('.swiper-container', {
+            pagination: '.pagination-1',
+            mode: 'vertical',
+            slidesPerView: 1,
+            paginationClickable: true,
+            speed: 800,
+            noSwiping: true
+        });
+        var jxStage = new JxSwiper(swiper);
+    })
+
+</script>
+</body>
+</html>

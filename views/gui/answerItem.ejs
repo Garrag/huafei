@@ -1,0 +1,41 @@
+<style>
+    .answer{
+        padding: 10px 10px 10px 0;
+    }
+    .answer-title{
+        cursor:pointer;
+        color: black;
+        white-space:nowrap;
+        text-overflow:ellipsis;
+        overflow: hidden;
+    }
+    .answer-icon{
+        float: left;
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        background-color: rgb(31,26,22)
+    }
+    .answer-desc{
+        cursor:pointer;
+        color: rgb(168,168,168);
+        padding-left: 30px;
+    }
+    .answer-hr{
+        margin: 0;
+        border-top: 2px solid #979797;
+    }
+</style>
+<div>
+    <div class="answer">
+        <div class="answer-icon"></div>
+        <div class="answer-title"><%=answer.title%></div>
+    </div>
+    <div class="answer">
+        <div class="answer-icon" style="background-color: #979797"></div>
+        <div class="answer-desc"><%=answer.desc%></div>
+    </div>
+</div>
+<%if(answer.isLast){%>
+<hr class="answer-hr">
+<%}%>

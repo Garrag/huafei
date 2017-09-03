@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Lehoo智能水杯资讯列表</title>
+    <% include ./gui/metaAndLink.ejs %>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body class="all">
+<%- include('gui/header.ejs', {id:4}) %>
+
+<div class="jx-layout-center">
+    <div id="content" style="margin-top: 50px">
+        <h3>资讯中心</h3>
+        <hr>
+        <!--新闻列表-->
+        <div class="container-fluid">
+            <div class="row" id="news-list">
+                <% for(var i = 0; i < news.length; i++){ %>
+                <a href="/news?id=<%= news[i].id %>" style="color: black">
+                    <div class="col-xs-12 col-md-6" style="padding: 10px;height: 200px;">
+                        <div style="height: 100%">
+                            <img style="width: 30%;float: left;margin-right: 10px" src="<%= news[i].img %>"
+                                 title="<%= news[i].info %>">
+
+                            <div>
+                                <h3 style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;"><%= news[i].title %></h3>
+
+                                <p style="color: rgb(168, 168, 168)"><%= news[i].date %></p>
+
+                                <p style="height: 50px; color:rgb(168, 168, 168);"><%= news[i].info %></p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <% } %>
+            </div>
+        </div>
+        <hr>
+        <nav>
+            <ul class="pager">
+                <li><a style="background-color: black;color: white" href="/news/list?index=<%= index-1 %>">上一页</a></li>
+                <li><a style="background-color: black;color: white" href="/news/list?index=<%= index-1+2 %>">下一页</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<% include ./gui/foot.ejs %>
+
+</body>
+</html>

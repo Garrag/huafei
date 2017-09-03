@@ -1,0 +1,68 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <title>巨芯科技后台</title>
+    <% include ./gui/metaAndLink.ejs %>
+    <link rel="stylesheet" href="/assets/css/admin.css">
+</head>
+<body>
+<% include ./gui/header.ejs %>
+<div class="am-cf admin-main">
+    <!-- sidebar start -->
+    <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
+        <div class="am-offcanvas-bar admin-offcanvas-bar">
+            <ul class="am-list admin-sidebar-list">
+                <li><a href="###"><span class="am-icon-home"></span> 首页</a></li>
+                <li><a href="###" onclick="changeContent(2)"><span class="am-icon-th"></span> 图片素材管理</a></li>
+                <li class="admin-parent">
+                    <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-file"></span>
+                        PC端新闻管理
+                        <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                    <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
+                        <li><a href="###" onclick="changeContent(0)" class="am-cf"><span class="am-icon-check"></span> 新闻管理</a>
+                        </li>
+                        <li><a href="###"  onclick="changeContent(1)"><span class="am-icon-check"></span> 发布新文章</a></li>
+                        <!--<li><a href="###"><span class="am-icon-th"></span> 相册页面</a></li>-->
+                        <!--<li><a href="###"><span class="am-icon-calendar"></span> 系统日志</a></li>-->
+                        <!--<li><a href="###"><span class="am-icon-bug"></span> 404</a></li>-->
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="am-panel am-panel-default admin-sidebar-panel" style="opacity: 0">
+                <div class="am-panel-bd">
+                    <p><span class="am-icon-bookmark"></span> 公告</p>
+
+                    <p>时光静好，与君语；细水流年，与君同。—— Amaze UI</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- sidebar end -->
+    <!-- content start -->
+    <div class="admin-content">
+        <div id="bg-content" style="min-height: 1000px">
+        </div>
+    </div>
+    <!-- content end -->
+</div>
+
+<a href="#" class="am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}">
+    <span class="am-icon-btn am-icon-th-list"></span>
+</a>
+
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="/assets/js/amazeui.ie8polyfill.min.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/amazeui.min.js"></script>
+<script src="/assets/js/app.js"></script>
+<script src="/javascripts/ejs_production.js"></script>
+<!-- 配置文件 -->
+<script type="text/javascript" src="/ueditor/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="/ueditor/ueditor.all.js"></script>
+<!-- 实例化编辑器 -->
+<script src="/javascripts/jx_Utils.js"></script>
+
+</body>
+</html>
