@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var mysql = require('./dao/mysql.js');
+// var mysql = require('./dao/mysql.js');
 
 router.all('/', function(req, res, next) {
     var data = {};

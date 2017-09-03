@@ -4,7 +4,19 @@ body {
     /* font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
 }
 
+.dev_head {
+    width: 1500px;
+    height: 100px;
+    text-align: center;
+}
+
 .head_logo {
     width: 100%;
+    /* height: auto; */
+}
+
+.head_slider {
+    text-align: center;
     height: auto;
+    /* margin: 0 auto; */
 }
