@@ -1,37 +1,37 @@
 
 <div class='dev_head'>
-    
     <img class='head_logo' src='/images/ui/logo.jpg'>
 </div>
-<div class='.head_slider'>
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <a><img src="/images/slider/slider_1.jpg" class="img-responsive"></a>
-            </div>
-            <div class="swiper-slide">
-                <a><img src="/images/slider/slider_2.jpg" class="img-responsive"></a>
-            </div>
-            <div class="swiper-slide">
-                <a><img src="/images/slider/slider_3.jpg" class="img-responsive"></a>
-            </div>
-        </div>
-        <div class="pagination"></div>
+<!-- 导航条 -->
+<div class='dev-nav'>
+    <div class='dev-nav-list'>
+        <div class='dev-nav-item' >首页</div>
+        <div class='dev-nav-item' >关于我们</div>
+        <div class='dev-nav-item' >产品展示</div>
+        <div class='dev-nav-item' >合作伙伴</div>
+        <div class='dev-nav-item' >联系我们</div>
     </div>
 </div>
-
-
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"> <a><img src="/images/slider/slider_1.jpg" class="img-responsive"></a> </div>
+        <div class="swiper-slide"> <a><img src="/images/slider/slider_2.jpg" class="img-responsive"></a> </div>
+        <div class="swiper-slide"> <a><img src="/images/slider/slider_3.jpg" class="img-responsive"></a> </div>
+    </div>
+    <!-- 如果需要分页器 -->
+    <div class="swiper-pagination"></div>
+</div>
 
 <script>
-    $(document).ready(function() {
-        //首页大轮播
-        var mySwiper = new Swiper('.swiper-container', {
-            loop: true,
+    $(document).ready(function () {
+        //console.log('asdfasdf');
+        var mySwiper = new Swiper ('.swiper-container', {
+            direction: 'vertical',
             autoplay: 3000,
-            autoplayDisableOnInteraction: false,
-            pagination: '.pagination',
-            paginationClickable: true
-        });
-        var cont = $('.swiper-container');
+            loop: true,
+            // 如果需要分页器
+            pagination: '.swiper-pagination',
+        })        
     })
+    
 </script>

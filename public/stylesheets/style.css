@@ -5,18 +5,33 @@ body {
 }
 
 .dev_head {
-    width: 1500px;
-    height: 100px;
+    /* width: 100%; */
     text-align: center;
 }
 
 .head_logo {
     width: 100%;
-    /* height: auto; */
+    min-width: 1000px;
 }
 
-.head_slider {
+.swiper-container {
+    width: 960px;
+    height: 280px;
+}
+
+.dev-nav {
+    color: #eeeeee;
     text-align: center;
-    height: auto;
-    /* margin: 0 auto; */
+}
+
+.dev-nav-list {
+    display: flex;
+    /* align-content: center; */
+    align-self: center;
+}
+
+.dev-nav-item {
+    width: 76px;
+    height: 40px;
+    text-align: center;
 }
