@@ -7,6 +7,7 @@ body {
 .dev_head {
     /* width: 100%; */
     text-align: center;
+    background-color: #ebebeb;
 }
 
 .head_logo {
@@ -20,18 +21,66 @@ body {
 }
 
 .dev-nav {
-    color: #eeeeee;
-    text-align: center;
+    background-color: #efefef;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 41px;
+    z-index: 50;
 }
 
 .dev-nav-list {
     display: flex;
-    /* align-content: center; */
-    align-self: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dev-nav-split {
+    border-left: 1.2px dashed black;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /* margin: 10px; */
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .dev-nav-item {
-    width: 76px;
-    height: 40px;
+    border-radius: 5px;
     text-align: center;
+    z-index: 100;
+}
+
+.dev-nav-more {
+    float: left;
+    list-style: none;
+    display: none;
+    /* position: relative; */
+    padding: 0;
+}
+
+.dev-nav-more li {
+    float: none;
+    margin: 0;
+    background: #049801;
+    /* background: #14ab11; */
+    width: 100px;
+    height: 41px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dev-nav-title {
+    color: black;
+    width: 100px;
+    height: 41px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dev-nav-item:hover {
+    background-color: #049801;
+    /* width: 10px; */
 }
