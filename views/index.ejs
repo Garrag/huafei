@@ -10,19 +10,20 @@
 </head>
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script src="/javascripts/swiper-3.4.2.min.js"></script>
+
 <body class="all">
     <%- include('gui/header.ejs', {}) %>
-    <div class="mian-node">
-        <%- include('gui/left_content.ejs', {}) %>
-        <div class="right-content-node">
-            <%- include('content/content_index.ejs', {}) %>
+        <div class="mian-node">
+            <%- include('gui/left_content.ejs', {}) %>
+                <div class="right-content-node">
+                    <%- include('content/content_index.ejs', {}) %>
+                </div>
         </div>
-    </div>
 </body>
 
 <script>
-    $(document).ready(function () {
-        var mySwiper = new Swiper ('.swiper-container', {
+    $(document).ready(function() {
+        var mySwiper = new Swiper('.swiper-container', {
             direction: 'vertical',
             autoplay: 3000,
             loop: true,
@@ -31,64 +32,64 @@
         });
 
         //注册导航鼠标悬停事件
-        $('.dev-nav-item').hover(function(event){
+        $('.dev-nav-item').hover(function(event) {
             $(this).find('.dev-nav-more').show()
-        }, function(event){
+        }, function(event) {
             $(this).find('.dev-nav-more').hide()
         });
 
-        $('.dev-nav-more li').hover(function(event){
+        $('.dev-nav-more li').hover(function(event) {
             $(this).css('background', '#14ab11')
-        }, function(event){
+        }, function(event) {
             $(this).css('background', '#049801')
         });
 
-        var gundong = function(args){
+        var gundong = function(args) {
             args = args || {}
             var listNode = args.listNode
-            if(listNode == null)return;
-            var speed = args.speed || 0.3    
+            if (listNode == null) return;
+            var speed = args.speed || 0.3
             var dir = args.dir || 0
-            
+
             var totalLength = listNode.children().length;
             var itemWidth = listNode.children().eq(0).outerWidth();
             var index = 0
-            var func = function(){
+            var func = function() {
                 index += speed;
-                if(index > itemWidth){
-                    listNode.children()[totalLength-1].after(listNode.children()[0])
+                if (index > itemWidth) {
+                    listNode.children()[totalLength - 1].after(listNode.children()[0])
                     index = 0;
                 }
-                if(dir == 1){
+                if (dir == 1) {
                     listNode.scrollLeft(index);
-                }else {
+                } else {
                     listNode.scrollTop(index);
                 }
-                setTimeout(func, 1/15);
+                setTimeout(func, 1 / 15);
             }
             func()
         }
 
-        var tiaodong = function(args){
+        var tiaodong = function(args) {
             args = args || {}
             var listNode = args.listNode
-            if(listNode == null)return;
-            var speed = args.speed || 3000   
-            var dir = args.dir || 0 
+            if (listNode == null) return;
+            var speed = args.speed || 3000
+            var dir = args.dir || 0
 
             var totalLength = listNode.children().length;
             var fristItem = listNode.children().eq(0);
             var secondItem = listNode.children().eq(1);
 
-            
+
             var itemHeight = fristItem.outerHeight();
             console.log(itemHeight)
-            
-            var func = function(){
+
+            var func = function() {
                 listNode.animate({
                     scrollTop: listNode.children().eq(0).outerHeight()
-                }, 1000, function(){
-                    listNode.children()[totalLength-1].after(listNode.children()[0])
+                }, 1000, function() {
+                    listNode.children()[totalLength - 1].after(listNode.children()[0])
                     setTimeout(func, 3000)
                 });
             }
@@ -97,21 +98,25 @@
 
 
         // $(function(){
-            
-            gundong({
-                listNode:$('.content-index-shangpin-list'),
-                dir:1
-            });
 
-            tiaodong({listNode:$('#list_1')});
-            tiaodong({listNode:$('#list_2')});
-            tiaodong({listNode:$('#list_3')});
-            // content-index-title-list
+        gundong({
+            listNode: $('.content-index-shangpin-list'),
+            dir: 1
+        });
+
+        tiaodong({
+            listNode: $('#list_1')
+        });
+        tiaodong({
+            listNode: $('#list_2')
+        });
+        tiaodong({
+            listNode: $('#list_3')
+        });
+        // content-index-title-list
         // });
 
     })
-    
 </script>
 
 </html>
-
