@@ -8,7 +8,14 @@
 </head>
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <body class="all">
-    <%- include('gui/header.ejs', {id:4}) %>
+    <%- include('gui/header.ejs', {}) %>
+    <div class="mian-node">
+        <%- include('gui/left_content.ejs', {}) %>
+        <div class="right-content-node">
+            <%- include('content/content_index.ejs', {}) %>
+        </div>
+    </div>
+
     <script src="/javascripts/swiper-3.4.2.min.js"></script>
 </body>
 
