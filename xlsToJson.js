@@ -1,28 +1,40 @@
 node_xj = require("xls-to-json");
-var root = '/Users/root/code/UnityCode/LastTaoist/Assets/ImgPro/excel/'
-var outUrl = '/Users/root/code/UnityCode/LastTaoist/Assets/StreamingAssets/';
+var root = './excel/'
+var outUrl = './excel/';
 
 
 node_xj({
-    input: root + "配置文件.xlsx", // input xls 
-    sheet: "道具", // specific sheetname 
-    output: outUrl + "PropConfig.json" // output json 
+    input: root + "data.xlsx", // input xls 
+    sheet: "工业化工原料", // specific sheetname 
+    output: outUrl + "product_gongye.json" // output json 
 }, function(err, result) {
     if (err) {
         console.error(err);
     } else {
-        console.log("道具,转化完成!!!");
+        console.log("工业化工原料,转化完成!!!");
     }
 });
 
 node_xj({
-    input: root + "配置文件.xlsx", // input xls 
-    output: outUrl + "LevelConfig.json", // output json 
-    sheet: "等级" // specific sheetname 
+    input: root + "data.xlsx", // input xls 
+    sheet: "环保处理原料", // specific sheetname 
+    output: outUrl + "product_huangbao.json" // output json 
 }, function(err, result) {
     if (err) {
         console.error(err);
     } else {
-        console.log("等级属性,转化完成!!!");
+        console.log("环保处理原料,转化完成!!!");
+    }
+});
+
+node_xj({
+    input: root + "data.xlsx", // input xls 
+    sheet: "食用化工原料", // specific sheetname 
+    output: outUrl + "product_shiyong.json" // output json 
+}, function(err, result) {
+    if (err) {
+        console.error(err);
+    } else {
+        console.log("食用化工原料,转化完成!!!");
     }
 });
