@@ -46,73 +46,55 @@
             $(this).css('background', '#049801')
         });
 
-        var gundong = function(args) {
-            args = args || {}
-            var listNode = args.listNode
-            if (listNode == null) return;
-            var speed = args.speed || 0.3
-            var dir = args.dir || 0
+        
 
-            var totalLength = listNode.children().length;
-            var itemWidth = listNode.children().eq(0).outerWidth();
-            var index = 0
-            var func = function() {
-                index += speed;
-                if (index > itemWidth) {
-                    listNode.children()[totalLength - 1].after(listNode.children()[0])
-                    index = 0;
-                }
-                if (dir == 1) {
-                    listNode.scrollLeft(index);
-                } else {
-                    listNode.scrollTop(index);
-                }
-                setTimeout(func, 1 / 15);
-            }
-            func()
-        }
+        // var gundong = function(args) {
+        //     args = args || {}
+        //     var listNode = args.listNode
+        //     if (listNode == null) return;
+        //     var speed = args.speed || 0.3
+        //     var dir = args.dir || 0
 
-        var tiaodong = function(args) {
-            args = args || {}
-            var listNode = args.listNode
-            if (listNode == null) return;
-            var speed = args.speed || 3000
-            var dir = args.dir || 0
+        //     var totalLength = listNode.children().length;
+        //     var itemWidth = listNode.children().eq(0).outerWidth();
+        //     var index = 0
+        //     var func = function() {
+        //         index += speed;
+        //         if (index > itemWidth) {
+        //             listNode.children()[totalLength - 1].after(listNode.children()[0])
+        //             index = 0;
+        //         }
+        //         if (dir == 1) {
+        //             listNode.scrollLeft(index);
+        //         } else {
+        //             listNode.scrollTop(index);
+        //         }
+        //         setTimeout(func, 1 / 15);
+        //     }
+        //     func()
+        // }
 
-            var totalLength = listNode.children().length;
-            var fristItem = listNode.children().eq(0);
-            var secondItem = listNode.children().eq(1);
-            var itemHeight = fristItem.outerHeight();
-            var func = function() {
-                listNode.animate({
-                    scrollTop: listNode.children().eq(0).outerHeight()
-                }, 1000, function() {
-                    listNode.children()[totalLength - 1].after(listNode.children()[0])
-                    setTimeout(func, 3000)
-                });
-            }
-            func()
-        }
+        // var tiaodong = function(args) {
+        //     args = args || {}
+        //     var listNode = args.listNode
+        //     if (listNode == null) return;
+        //     var speed = args.speed || 3000
+        //     var dir = args.dir || 0
 
-
-        // $(function(){
-
-        gundong({
-            listNode: $('.content-index-shangpin-list'),
-            dir: 1
-        });
-
-        tiaodong({
-            listNode: $('#list_1')
-        });
-        tiaodong({
-            listNode: $('#list_2')
-        });
-        tiaodong({
-            listNode: $('#list_3')
-        });
-        // content-index-title-list
-        // });
+        //     var totalLength = listNode.children().length;
+        //     var fristItem = listNode.children().eq(0);
+        //     var secondItem = listNode.children().eq(1);
+        //     var itemHeight = fristItem.outerHeight();
+        //     var func = function() {
+        //         listNode.animate({
+        //             scrollTop: listNode.children().eq(0).outerHeight()
+        //         }, 1000, function() {
+        //             listNode.children()[totalLength - 1].after(listNode.children()[0])
+        //             setTimeout(func, 3000)
+        //         });
+        //     }
+        //     func()
+        // }
 
     })
 </script>

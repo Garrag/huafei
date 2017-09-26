@@ -1,14 +1,24 @@
 <div class="right-contnet-dev">
     <div class="left-contnet-dev-title" >
         <div class="ui-label-1"></div>
-        <div class="left-contnet-dev-title-content">产品列表</div>
+        <div class="left-contnet-dev-title-content">产品信息</div>
         <div class="ui-label-1"></div>
     </div>
     <div class="list-dev-content">
-        <ui>
+        <div class="product-info-dev">
+            <p><span style="color:red;">名称:</span><%=infoData.name%></p><br>
+            <p><span style="color:red;">别名:</span><%=infoData.otherName || '无'%></p><br>
+            <p><span style="color:red;">英文名:</span><%=infoData.enName%></p><br>
+            <p><span style="color:red;">化学式:</span><%=infoData.formula%></p><br>
+            <p><span style="color:red;">CAS:</span><%=infoData.CAS%></p><br>
+            <p><span style="color:red;">特征:</span><%=infoData.feature%></p><br>
+            <p><span style="color:red;">用法:</span><%=infoData.userInfo%></p><br>
+            <p><span style="color:red;">用途:</span><%=infoData.howUse%></p><br>
+        </div>
+        <!-- <ui>
             <% for(var i=0; i<10; i++){ %>
                 <li> <div class="list-dev-content-li-icon"></div> 名字<%=i%></li>
             <%}%>
-        </ui>
+        </ui> -->
     </div>
 </div>

@@ -6,8 +6,8 @@
     </div>
     <div class="list-dev-content">
         <ui>
-            <% for(var i=0; i<10; i++){ %>
-                <li> <div class="list-dev-content-li-icon"></div> 名字<%=i%></li>
+            <% for(var i=0; i < listData.length; i++){ %>
+                <a href="./product_info?id=<%=listData[i].id%>&type=<%=listData[i].type%>"><li><div class="list-dev-content-li-icon"></div><%=listData[i].name%></li> </a>
             <%}%>
         </ui>
     </div>
