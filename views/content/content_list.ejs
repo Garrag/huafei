@@ -8,11 +8,11 @@
         <div class="row">
             <div class="col-xs-3">
                 <ui>
-                    <% for(var i=0; i < 100; i++){ %>
-                        <a href="./product_info?id=<%=listData[i].id%>&type=<%=listData[i].type%>">
+                    <% for(var i=0; i < list1.length; i++){ %>
+                        <a href="./product_info?id=<%=list1[i].id%>&type=<%=list1[i].type%>">
                             <li>
                                 <div class="list-dev-content-li-icon"></div>
-                                <%=listData[i].name%>
+                                <span class="list-dev-content-li-spane"><%=list1[i].name%></span>
                             </li>
                         </a>
                         <%}%>
@@ -20,32 +20,39 @@
             </div>
             <div class="col-xs-3">
                 <ui>
-                    <% for(var i=12; i < 24; i++){ %>
-                        <a href="./product_info?id=<%=listData[i].id%>&type=<%=listData[i].type%>">
+                    <% for(var i=0; i < list2.length; i++){ %>
+                        <a href="./product_info?id=<%=list2[i].id%>&type=<%=list2[i].type%>">
                             <li>
                                 <div class="list-dev-content-li-icon"></div>
-                                <%=listData[i].name%>
+                                <span class="list-dev-content-li-spane"><%=list2[i].name%></span>
                             </li>
                         </a>
                         <%}%>
                 </ui>
-
             </div>
             <div class="col-xs-3">
-                <!-- <ui>
-                    <% for(var i=20; i < 30; i++){ %>
-                        <a href="./product_info?id=<%=listData[i].id%>&type=<%=listData[i].type%>">
+                <ui>
+                    <% for(var i=0; i < list3.length; i++){ %>
+                        <a href="./product_info?id=<%=list3[i].id%>&type=<%=list3[i].type%>">
                             <li>
                                 <div class="list-dev-content-li-icon"></div>
-                                <%=listData[i].name%>
+                                <span class="list-dev-content-li-spane"><%=list3[i].name%></span>
                             </li>
                         </a>
                         <%}%>
-                </ui> -->
-
+                </ui>
             </div>
             <div class="col-xs-3">
-
+                <ui>
+                    <% for(var i=0; i < list4.length; i++){ %>
+                        <a href="./product_info?id=<%=list4[i].id%>&type=<%=list4[i].type%>">
+                            <li>
+                                <div class="list-dev-content-li-icon"></div>
+                                <span class="list-dev-content-li-spane"><%=list4[i].name%></span>
+                            </li>
+                        </a>
+                        <%}%>
+                </ui>
             </div>
         </div>
     </div>
