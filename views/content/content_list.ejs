@@ -1,14 +1,52 @@
 <div class="right-contnet-dev">
-    <div class="left-contnet-dev-title" >
+    <div class="left-contnet-dev-title">
         <div class="ui-label-1"></div>
         <div class="left-contnet-dev-title-content">产品列表</div>
         <div class="ui-label-1"></div>
     </div>
-    <div class="list-dev-content">
-        <ui>
-            <% for(var i=0; i < listData.length; i++){ %>
-                <a href="./product_info?id=<%=listData[i].id%>&type=<%=listData[i].type%>"><li><div class="list-dev-content-li-icon"></div><%=listData[i].name%></li> </a>
-            <%}%>
-        </ui>
+    <div class="list-dev-content container-fluid">
+        <div class="row">
+            <div class="col-xs-3">
+                <ui>
+                    <% for(var i=0; i < 100; i++){ %>
+                        <a href="./product_info?id=<%=listData[i].id%>&type=<%=listData[i].type%>">
+                            <li>
+                                <div class="list-dev-content-li-icon"></div>
+                                <%=listData[i].name%>
+                            </li>
+                        </a>
+                        <%}%>
+                </ui>
+            </div>
+            <div class="col-xs-3">
+                <ui>
+                    <% for(var i=12; i < 24; i++){ %>
+                        <a href="./product_info?id=<%=listData[i].id%>&type=<%=listData[i].type%>">
+                            <li>
+                                <div class="list-dev-content-li-icon"></div>
+                                <%=listData[i].name%>
+                            </li>
+                        </a>
+                        <%}%>
+                </ui>
+
+            </div>
+            <div class="col-xs-3">
+                <!-- <ui>
+                    <% for(var i=20; i < 30; i++){ %>
+                        <a href="./product_info?id=<%=listData[i].id%>&type=<%=listData[i].type%>">
+                            <li>
+                                <div class="list-dev-content-li-icon"></div>
+                                <%=listData[i].name%>
+                            </li>
+                        </a>
+                        <%}%>
+                </ui> -->
+
+            </div>
+            <div class="col-xs-3">
+
+            </div>
+        </div>
     </div>
 </div>

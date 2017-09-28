@@ -5,13 +5,16 @@ body {
     font-size: 16px;
     /* font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
 }
+
 a {
     color: black;
 }
-a:hover{
-    text-decoration:none;
+
+a:hover {
+    text-decoration: none;
     color: black;
 }
+
 p {
     margin: 0;
     padding: 0;
@@ -335,7 +338,6 @@ p {
 
 .list-dev-content ul {
     list-style: none;
-    
 }
 
 .list-dev-content li {
@@ -350,7 +352,7 @@ p {
 }
 
 .list-dev-content li::before {
-    content:'';
+    content: '';
     position: absolute;
     top: 15px;
     left: 10px;
