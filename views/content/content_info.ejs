@@ -6,15 +6,33 @@
     </div>
     <div class="list-dev-content">
         <div class="product-info-dev">
-            <p><span style="color:red;">图片:</span><img src="/images/product_list/<%=infoData.img%>" class="img-responsive" alt="暂无图片" style="max-height:300px;"></p>
-            <p><span style="color:red;">名称:</span><%=infoData.name%></p><br>
-            <p><span style="color:red;">别名:</span><%=infoData.otherName || '无'%></p><br>
-            <p><span style="color:red;">英文名:</span><%=infoData.enName%></p><br>
-            <p><span style="color:red;">化学式:</span><%=infoData.formula%></p><br>
-            <p><span style="color:red;">CAS:</span><%=infoData.CAS%></p><br>
-            <p><span style="color:red;">特征:</span><%=infoData.feature%></p><br>
-            <p><span style="color:red;">用法:</span><%=infoData.userInfo%></p><br>
-            <p><span style="color:red;">用途:</span><%=infoData.howUse%></p><br>
+            <% if(infoData.img){ %>
+                <p><span>图片:</span><img src="/images/product_list/<%=infoData.img%>" class="img-responsive" alt="暂无图片" style="max-height:300px;"></p>
+            <%}%>
+            <% if(infoData.name){ %>
+                <p><span>名称:</span><%=infoData.name%></p><br>
+            <%}%>
+            <% if(infoData.otherName){ %>
+                <p><span>别名:</span><%=infoData.otherName || '无'%></p><br>
+            <%}%>
+            <% if(infoData.enName){ %>
+                <p><span>英文名:</span><%=infoData.enName%></p><br>
+            <%}%>
+            <% if(infoData.formula){ %>
+                <p><span>化学式:</span><%=infoData.formula%></p><br>
+            <%}%>
+            <% if(infoData.CAS){ %>
+                <p><span>CAS:</span><%=infoData.CAS%></p><br>
+            <%}%>
+            <% if(infoData.feature){ %>
+                <p><span>特征:</span><%=infoData.feature%></p><br>
+            <%}%>
+            <% if(infoData.userInfo){ %>
+                <p><span>用法:</span><%=infoData.userInfo%></p><br>
+            <%}%>
+            <% if(infoData.howUse){ %>
+                <p><span>用途:</span><%=infoData.howUse%></p><br>
+            <%}%>
         </div>
         <!-- <ui>
             <% for(var i=0; i<10; i++){ %>

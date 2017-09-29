@@ -115,8 +115,11 @@ router.all('/', function(req, res, next) {
 router.all('/product_info', function(req, res, next) {
     var id = req.query.id || 0;
     var type = req.query.type || 0;
-
     var infoData = dataMap[type][id];
+    if (!fs.existsSync(path.join(__dirname, '../public/images/product_list/' + infoData.img)) ) {
+        infoData.img = null;
+    }
+
     var data = {infoData : infoData};
     res.render('product_info', data);
 });
