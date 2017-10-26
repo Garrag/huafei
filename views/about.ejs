@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>长沙亚中粤化工贸易有限公司</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/stylesheets/swiper-3.4.2.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<script src="/javascripts/swiper-3.4.2.min.js"></script>
+
+<body class="all">
+    <%- include('gui/header.ejs', {}) %>
+    <%- include('gui/info.ejs', {}) %>
+    <div class="mian-node">
+        <div style=" width: 210px;display: table-cell;vertical-align: top;">
+            <%- include('gui/left_content.ejs', {}) %>
+        </div>
+        <div class="right-contnet-dev" style="min-height: 400px;width:768px; display: table-cell;vertical-align: top;">
+            <div class="left-contnet-dev-title">
+                <div class="ui-label-1"></div>
+                <div class="left-contnet-dev-title-content">关于我们</div>
+                <div class="ui-label-1"></div>
+            </div>  
+            <div style="padding:10px;">
+                <p>长沙亚中粤化工贸易有限公司</p>
+                <p>联系人：周女士</p>
+                <p>电话:18574399662</p>
+                <p>邮箱：295770229@qq.com</p>
+                <p>地址：湖南省长沙市雨花区长沙大道566号至雅大厦</p>
+            </div>
+        </div>
+    </div>
+    <%- include('gui/foot.ejs', {}) %>
+</body>
+
+<script>
+    $(document).ready(function() {
+        var mySwiper = new Swiper('.swiper-container', {
+            direction: 'vertical',
+            autoplay: 3000,
+            loop: true,
+            // 如果需要分页器
+            pagination: '.swiper-pagination'
+        });
+
+        //注册导航鼠标悬停事件
+        $('.dev-nav-item').hover(function(event) {
+            $(this).find('.dev-nav-more').show()
+        }, function(event) {
+            $(this).find('.dev-nav-more').hide()
+        });
+
+        $('.dev-nav-more li').hover(function(event) {
+            // $(this).css('background', '#14ab11')
+        }, function(event) {
+            // $(this).css('background', '#049801')
+        });
+
+        
+
+        // var gundong = function(args) {
+        //     args = args || {}
+        //     var listNode = args.listNode
+        //     if (listNode == null) return;
+        //     var speed = args.speed || 0.3
+        //     var dir = args.dir || 0
+
+        //     var totalLength = listNode.children().length;
+        //     var itemWidth = listNode.children().eq(0).outerWidth();
+        //     var index = 0
+        //     var func = function() {
+        //         index += speed;
+        //         if (index > itemWidth) {
+        //             listNode.children()[totalLength - 1].after(listNode.children()[0])
+        //             index = 0;
+        //         }
+        //         if (dir == 1) {
+        //             listNode.scrollLeft(index);
+        //         } else {
+        //             listNode.scrollTop(index);
+        //         }
+        //         setTimeout(func, 1 / 15);
+        //     }
+        //     func()
+        // }
+
+        // var tiaodong = function(args) {
+        //     args = args || {}
+        //     var listNode = args.listNode
+        //     if (listNode == null) return;
+        //     var speed = args.speed || 3000
+        //     var dir = args.dir || 0
+
+        //     var totalLength = listNode.children().length;
+        //     var fristItem = listNode.children().eq(0);
+        //     var secondItem = listNode.children().eq(1);
+        //     var itemHeight = fristItem.outerHeight();
+        //     var func = function() {
+        //         listNode.animate({
+        //             scrollTop: listNode.children().eq(0).outerHeight()
+        //         }, 1000, function() {
+        //             listNode.children()[totalLength - 1].after(listNode.children()[0])
+        //             setTimeout(func, 3000)
+        //         });
+        //     }
+        //     func()
+        // }
+
+    })
+</script>
+
+</html>

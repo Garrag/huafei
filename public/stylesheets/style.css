@@ -23,11 +23,9 @@ p {
 .mian-node {
     width: 960px;
     margin: 10px auto;
-    display: flex;
 }
 
 .dev_head {
-    /* width: 100%; */
     text-align: center;
     background-color: #ebebeb;
 }
@@ -45,15 +43,14 @@ p {
 
 .dev-nav {
     background-color: #efefef;
-    display: flex;
-    width: 100%;
-    justify-content: center;
+    margin: 0 auto;
+    width: 600px;
     height: 41px;
     z-index: 50;
 }
 
 .dev-nav-list {
-    display: flex;
+    /* display: flex; */
     list-style: none;
     margin: 0;
     padding: 0;
@@ -61,17 +58,21 @@ p {
 
 .dev-nav-split {
     border-left: 1.2px dashed black;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    /* margin-top: 10px;
+    margin-bottom: 10px; */
     /* margin: 10px; */
-    margin-left: 5px;
-    margin-right: 5px;
+    /* margin-left: 5px;
+    margin-right: 5px; */
+    display: table-cell;
 }
 
 .dev-nav-item {
+    /* float:left; */
+    display: table-cell;
     border-radius: 5px;
     text-align: center;
     z-index: 100;
+    width: 150px;
 }
 
 .dev-nav-more {
@@ -80,6 +81,7 @@ p {
     display: none;
     /* position: relative; */
     padding: 0;
+    z-index: 100;
 }
 
 .dev-nav-more li {
@@ -90,9 +92,7 @@ p {
     /* background: #14ab11; */
     width: 150px;
     height: 41px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    line-height: 41px;
 }
 
 .dev-nav-more li:hover {
@@ -102,69 +102,57 @@ p {
     color: black;
     width: 150px;
     height: 41px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* border: 1px solid red; */
+    line-height: 41px;
 }
 
 .dev-nav-item:hover {
     background-color:rgb(193, 193, 193);
-    /* width: 10px; */
 }
 
 .left-content-node {
+    padding: 0;
     width: 210px;
-    /* background-color: rgb(242, 242, 242); */
+    display: table-cell;
+    vertical-align: top;
     margin-right: 10px;
 }
 
 .right-content-node {
+    display: table-cell;
+    vertical-align: top;
+    /* border: 1px solid red; */
     width: 738px;
+    position: relative;
 }
 
 .left-contnet-dev {
-    /* border: 1px solid rgb(204, 204, 204); */
-    /* border-radius: 6px; */
     padding: 5px;
-    /* background-color: rgb(242, 242, 242); */
     margin-bottom: 10px;
 }
 
 .left-contnet-dev-title {
     color: black;
     font-weight: 700;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 40px;
+    line-height: 40px;
     /* border-bottom: 1px dashed rgb(193, 193, 193); */
     background-color: rgb(220, 220, 220);
 }
 
 .left-contnet-dev-title-content {
-    flex: 1;
-    line-height: 50px;
+    line-height: 40px;
     font-size: 16px;
     font-weight: 700;
     float: left;
     padding-left: 10px;
     color: black;
     /* text-align: center; */
-    padding-left: 10px;
-}
-
-.ui-label-1 {
-    /* border-radius: 15px; */
-    /* background-color: green; */
-    /* width: 5px; */
-    /* height: 25px; */
-    /* margin-left: 5px; */
-    /* margin-right: 5px; */
+    /* padding-left: 10px; */
 }
 
 .left-contnet-dev-input {
     height: 30px;
-    display: flex;
     padding-left: 5px;
     padding-right: 5px;
     margin-top: 10px;
@@ -198,9 +186,7 @@ p {
 .left-contnet-dev-node li {
     width: 100%;
     height: 40px;
-    display: flex;
-    /* justify-content: center; */
-    align-items: center;
+    line-height: 40px;
     border-bottom: 1px solid rgb(204, 204, 204);
 }
 
@@ -222,16 +208,11 @@ p {
     margin-bottom: 10px;
 }
 
-.right-contnet-row {
-    display: flex;
-}
-
 .right-contnet-row-dev-split {
     width: 15px;
 }
 
 .right-contnet-row-dev {
-    flex: 1;
     border: 1px solid rgb(204, 204, 204);
     border-radius: 6px;
     padding: 5px;
@@ -245,9 +226,6 @@ p {
     float: left;
     margin-right: 10px;
     margin-top: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
 .content-index-jianjie-img img {
@@ -270,9 +248,6 @@ p {
 .content-index-shangpin-list {
     padding: 0;
     margin: 0;
-    display: flex;
-    align-items: center;
-    /* overflow-x: hidden; */
     overflow-x: hidden;
     height: 100%;
 }
@@ -307,8 +282,6 @@ p {
     height: 35px;
     border-bottom: 1px dashed rgb(193, 193, 193);
     margin: 0;
-    display: flex;
-    align-items: center;
 }
 
 .content-index-title-list li:hover {

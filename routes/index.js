@@ -124,4 +124,8 @@ router.all('/product_info', function(req, res, next) {
     res.render('product_info', data);
 });
 
+router.all('/about', function(req, res, next) {
+    res.render('about', {});
+});
+
 module.exports = router;
