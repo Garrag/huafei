@@ -128,4 +128,8 @@ router.all('/about', function(req, res, next) {
     res.render('about', {});
 });
 
+router.all('/hzhb', function(req, res, next) {
+    res.render('hzhb', {});
+});
+
 module.exports = router;
