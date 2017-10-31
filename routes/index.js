@@ -103,6 +103,10 @@ var splitFun = function(newJson, type){
 }
 
 router.all('/', function(req, res, next) {
+    res.render('home', {});
+});
+
+router.all('/product', function(req, res, next) {
     var type = req.query.index || 1;
     var json = dataMap[type];
     //去空
@@ -111,6 +115,8 @@ router.all('/', function(req, res, next) {
     var listData = splitFun(newJson, type)
     res.render('index', listData);
 });
+
+
 
 router.all('/product_info', function(req, res, next) {
     var id = req.query.id || 0;
