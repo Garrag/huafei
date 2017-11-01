@@ -35,10 +35,27 @@ p {
     min-width: 1000px;
 }
 
-.swiper-container {
+#slider1 {
     margin-top: 5px;
     width: 960px;
     height: 280px;
+}
+
+#slider2 {
+    width: 690px;
+    border: 1px solid #ebebeb;
+}
+
+.list-item {
+    height: 475px;
+    /* position: relative; */
+    text-align: center;
+}
+
+.list-item div {
+    margin: 50px auto;
+    /* position: absolute;  
+    top: 0; left: 0; bottom: 0; right: 0;  */
 }
 
 .dev-nav {

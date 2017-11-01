@@ -103,7 +103,21 @@ var splitFun = function(newJson, type){
 }
 
 router.all('/', function(req, res, next) {
-    res.render('home', {});
+    var json = dataMap[1];
+    var newJson = filterFun(json)
+    // console.log('===================================================')
+    // console.log(newJson)
+    // console.log('===================================================')
+    var arr = [];
+    var config = [0,1,3,5,7,8,9,10,11,14];
+    for (var i = 0; i < config.length; i++) {
+        var id = config[i];
+        var item = newJson[id]
+        item.id = id;
+        item.type = 1;
+        arr.push(item)
+    }
+    res.render('home', {listData : arr} );
 });
 
 router.all('/product', function(req, res, next) {

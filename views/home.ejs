@@ -21,12 +21,24 @@
         <div class="right-contnet-dev" style="min-height: 400px;width:768px; display: table-cell;vertical-align: top;">
             <div class="left-contnet-dev-title">
                 <div class="ui-label-1"></div>
-                <div class="left-contnet-dev-title-content">价值</div>
+                <div class="left-contnet-dev-title-content">推荐产品</div>
                 <div class="ui-label-1"></div>
             </div>
-            <div style="padding:10px;">
-                <img src="/images/ui/index_1.png" class="img-responsive" alt="暂无图片" style="width:600px; margin: 40px auto;">
-                <!-- <img src="/images/ui/index_2.jpg" class="img-responsive" alt="暂无图片" style="max-width:560px;margin: 0 auto;"> -->
+            <div style="padding:10px; margin: 5px auto;border: 1px solid rgb(204, 204, 204);border-radius: 6px;">
+                <div class="swiper-container swiper-container-horizontal" id="slider2">
+                    <div class="swiper-wrapper" style="transform: translate3d(-578.75px, 0px, 0px); transition-duration: 0ms;">
+                        <%for(var i=0; i<listData.length; i++){%>
+                            <div class="swiper-slide list-item">
+                                <div>
+                                    <a href="./product_info?id=<%=listData[i].id%>&type=<%=listData[i].type%>">
+                                    <img src="/images/product_list/<%=listData[i].img%>" class="img-responsive" alt="暂无图片">
+                                    <p style="text-align:center;"><%=listData[i].name%></p>
+                                    </a>
+                                </div>
+                            </div>
+                        <%}%>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -35,8 +47,8 @@
 
 <script>
     $(document).ready(function() {
-        var mySwiper = new Swiper('.swiper-container', {
-            direction: 'vertical',
+        var mySwiper = new Swiper('#slider1', {
+            // direction: 'vertical',
             autoplay: 3000,
             loop: true,
             // 如果需要分页器
@@ -55,6 +67,19 @@
         }, function(event) {
             // $(this).css('background', '#049801')
         });
+
+        var swiper2 = new Swiper('#slider2', {
+            // pagination: '.swiper-pagination',
+            slidesPerView: 3,
+            centeredSlides: true,
+            paginationClickable: true,
+            spaceBetween: 10,
+            loop:true,
+            autoplay: 1000,//可选选项，自动滑动
+            autoplayDisableOnInteraction:false,
+            preventLinksPropagation : false,
+        });
+
     })
 </script>
 
