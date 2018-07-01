@@ -1,68 +1,98 @@
 <!doctype html>
 <html class="no-js">
+
 <head>
-    <title>巨芯科技后台</title>
+    <title>长沙亚中粤管理后台</title>
     <% include ./gui/metaAndLink.ejs %>
-    <link rel="stylesheet" href="/assets/css/admin.css">
+        <link rel="stylesheet" href="/assets/css/admin.css">
 </head>
+
 <body>
-<% include ./gui/header.ejs %>
-<div class="am-cf admin-main">
-    <!-- sidebar start -->
-    <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
-        <div class="am-offcanvas-bar admin-offcanvas-bar">
-            <ul class="am-list admin-sidebar-list">
-                <li><a href="###"><span class="am-icon-home"></span> 首页</a></li>
-                <li><a href="###" onclick="changeContent(2)"><span class="am-icon-th"></span> 图片素材管理</a></li>
-                <li class="admin-parent">
-                    <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-file"></span>
-                        PC端新闻管理
-                        <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-                    <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
-                        <li><a href="###" onclick="changeContent(0)" class="am-cf"><span class="am-icon-check"></span> 新闻管理</a>
+    <% include ./gui/header.ejs %>
+        <div class="am-cf admin-main">
+            <!-- sidebar start -->
+            <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
+                <div class="am-offcanvas-bar admin-offcanvas-bar">
+                    <ul class="am-list admin-sidebar-list">
+                        <li>
+                            <a href="###" id="mangaer_product_img">
+                                <span class="am-icon-th"></span> 图片素材管理</a>
                         </li>
-                        <li><a href="###"  onclick="changeContent(1)"><span class="am-icon-check"></span> 发布新文章</a></li>
-                        <!--<li><a href="###"><span class="am-icon-th"></span> 相册页面</a></li>-->
-                        <!--<li><a href="###"><span class="am-icon-calendar"></span> 系统日志</a></li>-->
-                        <!--<li><a href="###"><span class="am-icon-bug"></span> 404</a></li>-->
+                        <li>
+                            <a href="/background/newproduct" id="mangaer_product_type">
+                                <span class="am-icon-th"></span> 创建新产品</a>
+                        </li>
+                        <li class="admin-parent">
+                            <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}">
+                                <span class="am-icon-file"></span>
+                                产品管理
+                                <span class="am-icon-angle-right am-fr am-margin-right"></span>
+                            </a>
+                            <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
+                                <% for(var i=0; i<types.length; i++ ){ %>
+                                    <li>
+                                        <a href="/background/productlist?type=<%=i+1%>">
+                                            <span class="am-icon-check "></span>
+                                            <%=types[i].name%>
+                                        </a>
+                                    </li>
+                                    <%}%>
+                            </ul>
+                        </li>
                     </ul>
-                </li>
-            </ul>
 
-            <div class="am-panel am-panel-default admin-sidebar-panel" style="opacity: 0">
-                <div class="am-panel-bd">
-                    <p><span class="am-icon-bookmark"></span> 公告</p>
+                    <div class="am-panel am-panel-default admin-sidebar-panel " style="opacity: 0 ">
+                        <div class="am-panel-bd ">
+                            <p>
+                                <span class="am-icon-bookmark "></span> 公告</p>
 
-                    <p>时光静好，与君语；细水流年，与君同。—— Amaze UI</p>
+                            <p></p>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <!-- sidebar end -->
+            <!-- content start -->
+            <div class="admin-content ">
+                <div id="bg-content " style="min-height: 1000px ">
+                    <%if(viewType &&viewType == 'product_list'){%>
+                        <% include ./bg_product_list.ejs%>
+                            <%}else if(viewType &&viewType == 'product_new'){%>
+                                <% include ./bg_product_new.ejs%>
+                                    <%}else if(viewType &&viewType == 'product_edit'){%>
+                                        <% include ./bg_product_edit.ejs%>
+                                            <%}%>
+                </div>
+            </div>
+            <!-- content end -->
         </div>
-    </div>
-    <!-- sidebar end -->
-    <!-- content start -->
-    <div class="admin-content">
-        <div id="bg-content" style="min-height: 1000px">
-        </div>
-    </div>
-    <!-- content end -->
-</div>
 
-<a href="#" class="am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}">
-    <span class="am-icon-btn am-icon-th-list"></span>
-</a>
+        <a href="# " class="am-show-sm-only admin-menu " data-am-offcanvas="{target: '#admin-offcanvas'} ">
+            <span class="am-icon-btn am-icon-th-list "></span>
+        </a>
 
-<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-<script src="/assets/js/amazeui.ie8polyfill.min.js"></script>
-<script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/amazeui.min.js"></script>
-<script src="/assets/js/app.js"></script>
-<script src="/javascripts/ejs_production.js"></script>
-<!-- 配置文件 -->
-<script type="text/javascript" src="/ueditor/ueditor.config.js"></script>
-<!-- 编辑器源码文件 -->
-<script type="text/javascript" src="/ueditor/ueditor.all.js"></script>
-<!-- 实例化编辑器 -->
-<script src="/javascripts/jx_Utils.js"></script>
+        <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js "></script>
+        <script src="/assets/js/amazeui.ie8polyfill.min.js "></script>
+        <script src="/assets/js/jquery.min.js "></script>
+        <script src="/assets/js/amazeui.min.js "></script>
+        <script src="/assets/js/app.js "></script>
+        <!-- <script src="/javascripts/background.js "></script> -->
+        <script>
+            window.onload = () => {
+                $('#mangaer_product_img').on('click', function (event) {});
+                $('#mangaer_product_type').on('click', function (event) {
 
+                });
+                $('.mangaer_product_list').on('click', function (event) {
+                    // $.post('/background/getProductList', {
+                    //     type: $(this).attr("data-type"),
+                    // }, function (rs) {
+                    //     console.log(rs.data);
+                    // })
+                });
+                $('#mangaer_product_new').on('click', function (event) {});
+            }
+        </script>
 </body>
+
 </html>

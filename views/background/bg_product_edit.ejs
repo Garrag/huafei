@@ -1,0 +1,71 @@
+<!-- 加载编辑器的容器 -->
+<form id="jx_new_form" style="margin-top: 50px; padding-left: 5%; padding-right: 5%" class="am-form">
+    <div class="am-form-group">
+        <label for="doc-ipt-email-1">产品名</label>
+        <input type="text" class="" name="name" id="name" placeholder="" value="<%=productData.name%>">
+    </div>
+    <div class="am-form-group">
+        <label for="doc-ta-1">英文名</label>
+        <input type="text" class="" name="enName" id="enName" placeholder="" value="<%=productData.en_name%>">
+    </div>
+    <div class="am-form-group">
+        <label for="doc-ta-1">别名</label>
+        <input type="text" class="" name="other_name" id="other_name" placeholder="" value="<%=productData.other_name%>">
+    </div>
+    <div class="am-form-group">
+        <label for="doc-ta-1">化学式</label>
+        <input type="text" class="" name="formula" id="formula" placeholder="" value="<%=productData.formula%>">
+    </div>
+    <div class="am-form-group">
+        <label for="doc-ta-1">CAS</label>
+        <input type="text" class="" name="cas" id="cas" placeholder="" value="<%=productData.cas%>">
+    </div>
+    <div class="am-form-group">
+        <label for="doc-ta-1">特征</label>
+        <textarea class="" rows="5" id="feature" value="<%=productData.feature%>"></textarea>
+    </div>
+    <div class="am-form-group">
+        <label for="doc-ta-1">说明</label>
+        <textarea class="" rows="5" id="userInfo" value="<%=productData.use_info%>"></textarea>
+    </div>
+    <div class="am-form-group">
+        <label for="doc-ta-1">使用方式</label>
+        <textarea class="" rows="5" id="howUse" value="<%=productData.how_use%>"></textarea>
+    </div>
+
+    <!-- <script id="" name="content" type="text/plain" value="<%=productData.name%>"></script> -->
+    <br>
+    <button onclick="submitToServer('<%= productData.id %>','<%= productData.type %>')" type="button" class="am-btn am-btn-danger am-btn-sm">保存</button>
+</form>
+
+<script>
+    var submitToServer = function (id, type) {
+        var name = $('#name').val();
+        if (!name) {
+            alert('必须填写产品名称!');
+            return;
+        }
+        var req = {
+            type: type,
+            name: name,
+            enName: $('#enName').val(),
+            other_name: $('#other_name').val(),
+            formula: $('#formula').val(),
+            cas: $('#cas').val(),
+            feature: $('#feature').val(),
+            userInfo: $('#userInfo').val(),
+            howUse: $('#howUse').val(),
+            id: id,
+        }
+        $.post('/background/updateProduct',
+            req,
+            function (data) {
+                if (data.ret === 0) {
+                    alert('更新成功!');
+                    window.location.href = '/background/productlist?type=' + type;
+                } else {
+                    alert('更新失败:' + data.msg);
+                }
+            });
+    }
+</script>

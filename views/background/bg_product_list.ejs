@@ -1,0 +1,91 @@
+<table class="am-table am-table-striped am-table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>图片</th>
+            <th>产品</th>
+            <th>换图</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for(var i = 0;i < productListData.length ;i++){ %>
+            <tr class="am-success">
+                <td>
+                    <%= productListData[i].id %>
+                </td>
+                <td>
+                    <img class="new-list-img" src="../images/product_list/<%=productListData[i].img%>" />
+                </td>
+                <td class="new-list-title">
+                    <%= productListData[i].name %>
+                </td>
+                <!-- <td>
+                    <form action="/uploadimg" method="post" enctype="multipart/form-data">
+                        <div class="am-form-group">
+                            <input type="file" name="img" id="doc-ipt-file-1">
+                            <input type="submit" value="上传图片" />
+                        </div>
+                    </form>
+                </td> -->
+                <td>
+                    <form action="/uploadimg" method="post" enctype="multipart/form-data">
+                        <input type="file" name="img" id="doc-ipt-file-1">
+                        <button data-id="<%=productListData[i].id%>" class="btn-upload" type="button" class="am-btn am-btn-warning am-btn-sm">
+                            上传图片
+                        </button>
+                    </form>
+                </td>
+                <td>
+                    <a href="/background/editproduct?id=<%=productListData[i].id%>" type="button" class="am-btn am-btn-secondary am-btn-sm">
+                        编辑
+                    </a>
+                    <button onclick="deleteProduct('<%= productListData[i].id %>','<%= productListData[i].type %>')" type="button" class="am-btn am-btn-danger am-btn-sm">
+                        删除
+                    </button>
+                </td>
+            </tr>
+            <% } %>
+    </tbody>
+</table>
+
+<div class="am-popup" id="change_img_popup">
+    <div class="am-popup-inner">
+        <div class="am-popup-hd">
+            <h4 class="am-popup-title">切换新闻图片</h4>
+            <span data-am-modal-close class="am-close">&times;</span>
+        </div>
+        <div id="NewsImgContent" class="am-popup-bd">
+        </div>
+    </div>
+</div>
+
+<script>
+    var deleteProduct = function (id, type) {
+        console.log('deleteproduct', id, type);
+        $.post('/background/deleteproduct', {
+            id: id
+        }, function (data) {
+            if (data.ret === 0) {
+                alert('删除成功!');
+                window.location.href = '/background/productlist?type=' + type;
+            } else {
+                alert('删除失败:' + data.msg);
+            }
+        });
+    }
+    $(".btn-upload").on('click', function (event) {
+        console.log('开始上传')
+        $(this).parent.ajaxSubmit({
+            url: '/uploadimg',
+            type: 'post',
+            enctype: "multipart/form-data",
+            // dataType: 'json',
+            beforeSubmit: function () {},
+            success: function (data) {
+                alert(data);
+            },
+            clearForm: false, //禁止清楚表单 resetForm: false //禁止重置表单 });
+        });
+    });
+</script>
