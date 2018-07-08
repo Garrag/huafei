@@ -5,8 +5,8 @@ var path = require('path')
 var crypto = require('crypto');
 var mysql = require('./../dao/mysql.js');
 
-var _root = path.join(__dirname, 'public', 'images', 'product_list'); //, 'product_list'
-var _temp = path.join(__dirname, 'public', 'tempImg');
+var _root = path.join(process.cwd(), 'public', 'images', 'product_list'); //, 'product_list'
+var _temp = path.join(process.cwd(), 'public', 'tempImg');
 
 var router = express.Router();
 var upload = multer({

@@ -26,12 +26,12 @@
                                 </td>
                                 <td>
                                     <form action="/uploadimg" method="post" enctype="multipart/form-data">
-                                        <input id="uploadFile" type="file" name="img" id="doc-ipt-file-1">
+                                        <input id="uploadFile_<%=productListData[i].id%>" type="file" name="img" id="doc-ipt-file-1">
                                         <input id="uploadId" type="hidden" name="id" value="<%=productListData[i].id%>">
-                                        <button class="btn-upload" onclick="uploadImg(this,'<%= productListData[i].type %>')" class="am-btn am-btn-warning am-btn-sm">
-                                            上传图片
-                                        </button>
                                     </form>
+                                    <button class="btn-upload" onclick="uploadImg('<%=productListData[i].id%>','<%= productListData[i].type %>')" class="am-btn am-btn-warning am-btn-sm">
+                                        上传图片
+                                    </button>
                                     <button class="btn-upload" onclick="removeImg('<%=productListData[i].id%>','<%= productListData[i].type %>')" class="am-btn am-btn-warning am-btn-sm">
                                         移除图片
                                     </button>
@@ -83,17 +83,22 @@
             }
         });
     }
-    var uploadImg = function (event, type) {
-        var filePath = $($(event).parent()[0]).children("#uploadFile").val();
+    var uploadImg = function (id, type) {
+        var filePath = $("#uploadFile_" + id)[0].files[0];
+        console.log(id, filePath)
         if (!filePath) {
+            console.log('未选择图片,请先选择需要上传的图片');
             alert('未选择图片,请先选择需要上传的图片');
             return;
         }
+        var formData = new FormData();
+        formData.append("img", $("#uploadFile_" + id)[0].files[0]);
+        formData.append("id", id);
         $.ajax({
             url: '/uploadimg',
             type: 'POST',
             cache: false,
-            data: new FormData($(event).parent()[0]),
+            data: formData,
             processData: false,
             contentType: false
         }).done(function (res) {
