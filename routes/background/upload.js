@@ -18,7 +18,7 @@ let createMD5 = function (password) {
     return md5.update(password).digest('hex');
 }
 
-router.post('/', upload.single('img'), function (req, res, next) {
+router.all('/', upload.single('img'), function (req, res, next) {
     var file = req.file;
     var id = req.body.id;
     //重命名文件 加上文件后缀

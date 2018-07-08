@@ -71,7 +71,7 @@ router.all('/product', function (req, res, next) {
 router.all('/product_info', function (req, res, next) {
     var id = req.query.id || 0;
     mysql.escapingQuery("select * from products where id = ?", [id], function (err, rs) {
-        console.log(rs[0]);
+        // console.log(rs[0]);
         var data = {
             infoData: rs[0]
         };
