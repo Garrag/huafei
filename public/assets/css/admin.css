@@ -370,6 +370,6 @@ gallery.html css
 
 }
 .new-list-img {
-    max-height: 50px;
-    min-height: 50px;
+    max-height: 100px;
+    min-height: 100px;
 }

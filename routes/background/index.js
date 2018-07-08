@@ -62,7 +62,7 @@ router.all('/newproduct', function (req, res, next) {
     html_data.viewType = 'product_new';
     res.render(_root + "index", html_data);
 });
-//创建新产品
+//编辑产品
 router.all('/editproduct', function (req, res, next) {
     var id = req.query.id;
     // console.log(id);
@@ -85,6 +85,16 @@ router.all('/productlist/', function (req, res, next) {
     mysql.escapingQuery("select * from products where type = ? order by id desc;", [type], function (err, rs) {
         if (err) console.log(err);
         else {
+            rs = rs.sort(function (a, b) {
+                if (a.home > b.home) {
+                    return -1;
+                } else if (a.home < b.home) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            })
+
             html_data.productListData = rs;
             res.render(_root + "index", html_data);
         }
@@ -167,10 +177,82 @@ router.post('/updateProduct', function (req, res, next) {
         }
     })
 });
-
+// 删除产品
 router.post('/deleteproduct/', function (req, res, next) {
     var id = req.body.id;
     mysql.escapingQuery("DELETE FROM products WHERE id = ?", [id], function (err, rs) {
+        if (err) {
+            res.jsonp({
+                ret: -1,
+                msg: err,
+            })
+        } else {
+            if (rs.affectedRows > 0) {
+                res.jsonp({
+                    ret: 0,
+                    msg: "ok",
+                })
+            } else {
+                res.jsonp({
+                    ret: -1,
+                    msg: err,
+                })
+            }
+        }
+    });
+});
+//删除图标
+router.all('/deleteimg/', function (req, res, next) {
+    var id = req.body.id;
+    mysql.escapingQuery("update products set img = ? where id = ?", ['', id], function (err, rs) {
+        if (err) {
+            res.jsonp({
+                ret: -1,
+                msg: err,
+            })
+        } else {
+            if (rs.affectedRows > 0) {
+                res.jsonp({
+                    ret: 0,
+                    msg: "ok",
+                })
+            } else {
+                res.jsonp({
+                    ret: -1,
+                    msg: err,
+                })
+            }
+        }
+    });
+});
+//添加首页
+router.all('/addhome/', function (req, res, next) {
+    var id = req.body.id;
+    mysql.escapingQuery("update products set home = ? where id = ?", [1, id], function (err, rs) {
+        if (err) {
+            res.jsonp({
+                ret: -1,
+                msg: err,
+            })
+        } else {
+            if (rs.affectedRows > 0) {
+                res.jsonp({
+                    ret: 0,
+                    msg: "ok",
+                })
+            } else {
+                res.jsonp({
+                    ret: -1,
+                    msg: err,
+                })
+            }
+        }
+    });
+});
+//移除首页
+router.all('/removehome/', function (req, res, next) {
+    var id = req.body.id;
+    mysql.escapingQuery("update products set home = ? where id = ?", [0, id], function (err, rs) {
         if (err) {
             res.jsonp({
                 ret: -1,

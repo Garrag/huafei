@@ -10,42 +10,51 @@
     </thead>
     <tbody>
         <% for(var i = 0;i < productListData.length ;i++){ %>
-            <tr class="am-success">
-                <td>
-                    <%= productListData[i].id %>
-                </td>
-                <td>
-                    <img class="new-list-img" src="../images/product_list/<%=productListData[i].img%>" />
-                </td>
-                <td class="new-list-title">
-                    <%= productListData[i].name %>
-                </td>
-                <!-- <td>
-                    <form action="/uploadimg" method="post" enctype="multipart/form-data">
-                        <div class="am-form-group">
-                            <input type="file" name="img" id="doc-ipt-file-1">
-                            <input type="submit" value="上传图片" />
-                        </div>
-                    </form>
-                </td> -->
-                <td>
-                    <form action="/uploadimg" method="post" enctype="multipart/form-data">
-                        <input type="file" name="img" id="doc-ipt-file-1">
-                        <button data-id="<%=productListData[i].id%>" class="btn-upload" type="button" class="am-btn am-btn-warning am-btn-sm">
-                            上传图片
-                        </button>
-                    </form>
-                </td>
-                <td>
-                    <a href="/background/editproduct?id=<%=productListData[i].id%>" type="button" class="am-btn am-btn-secondary am-btn-sm">
-                        编辑
-                    </a>
-                    <button onclick="deleteProduct('<%= productListData[i].id %>','<%= productListData[i].type %>')" type="button" class="am-btn am-btn-danger am-btn-sm">
-                        删除
-                    </button>
-                </td>
-            </tr>
-            <% } %>
+            <%if(productListData[i].home == 1){%>
+                <tr class="am-danger">
+                    <%}else {%>
+                        <tr class="am-success">
+                            <%}%>
+                                <td>
+                                    <%= productListData[i].id %>
+                                </td>
+                                <td>
+                                    <img class="new-list-img" src="../images/product_list/<%=productListData[i].img%>" />
+                                </td>
+                                <td class="new-list-title">
+                                    <%= productListData[i].name %>
+                                </td>
+                                <td>
+                                    <form action="/uploadimg" method="post" enctype="multipart/form-data">
+                                        <input id="uploadFile" type="file" name="img" id="doc-ipt-file-1">
+                                        <input id="uploadId" type="hidden" name="id" value="<%=productListData[i].id%>">
+                                        <button class="btn-upload" onclick="uploadImg(this,'<%= productListData[i].type %>')" class="am-btn am-btn-warning am-btn-sm">
+                                            上传图片
+                                        </button>
+                                    </form>
+                                    <button class="btn-upload" onclick="removeImg('<%=productListData[i].id%>','<%= productListData[i].type %>')" class="am-btn am-btn-warning am-btn-sm">
+                                        移除图片
+                                    </button>
+                                </td>
+                                <td>
+                                    <a href="/background/editproduct?id=<%=productListData[i].id%>" type="button" class="am-btn am-btn-secondary am-btn-sm">
+                                        编辑
+                                    </a>
+                                    <button onclick="deleteProduct('<%= productListData[i].id %>','<%= productListData[i].type %>')" type="button" class="am-btn am-btn-danger am-btn-sm">
+                                        删除
+                                    </button>
+                                    <%if(productListData[i].home == 0){%>
+                                        <a onclick="addHome('<%= productListData[i].id %>','<%= productListData[i].type %>')" class="am-btn am-btn-secondary am-btn-sm">
+                                            添加首页
+                                        </a>
+                                        <%}else {%>
+                                            <a onclick="removeHome('<%= productListData[i].id %>','<%= productListData[i].type %>')" class="am-btn am-btn-danger am-btn-sm">
+                                                移除首页
+                                            </a>
+                                            <%}%>
+                                </td>
+                        </tr>
+                        <% } %>
     </tbody>
 </table>
 
@@ -67,25 +76,63 @@
             id: id
         }, function (data) {
             if (data.ret === 0) {
-                alert('删除成功!');
+                // alert('删除成功!');
                 window.location.href = '/background/productlist?type=' + type;
             } else {
                 alert('删除失败:' + data.msg);
             }
         });
     }
-    $(".btn-upload").on('click', function (event) {
-        console.log('开始上传')
-        $(this).parent.ajaxSubmit({
+    var uploadImg = function (event, type) {
+        var filePath = $($(event).parent()[0]).children("#uploadFile").val();
+        if (!filePath) {
+            alert('未选择图片,请先选择需要上传的图片');
+            return;
+        }
+        $.ajax({
             url: '/uploadimg',
-            type: 'post',
-            enctype: "multipart/form-data",
-            // dataType: 'json',
-            beforeSubmit: function () {},
-            success: function (data) {
-                alert(data);
-            },
-            clearForm: false, //禁止清楚表单 resetForm: false //禁止重置表单 });
+            type: 'POST',
+            cache: false,
+            data: new FormData($(event).parent()[0]),
+            processData: false,
+            contentType: false
+        }).done(function (res) {
+            window.location.href = '/background/productlist?type=' + type;
+            // console.log(res.msg);
+        }).fail(function (res) {});
+    }
+
+    var removeImg = function (id, type) {
+        $.post('/background/deleteimg', {
+            id: id
+        }, function (data) {
+            if (data.ret === 0) {
+                window.location.href = '/background/productlist?type=' + type;
+            } else {
+                alert('移除失败:' + data.msg);
+            }
         });
-    });
+    }
+    var addHome = function (id, type) {
+        $.post('/background/addhome', {
+            id: id
+        }, function (data) {
+            if (data.ret === 0) {
+                window.location.href = '/background/productlist?type=' + type;
+            } else {
+                alert('移除失败:' + data.msg);
+            }
+        });
+    }
+    var removeHome = function (id, type) {
+        $.post('/background/removehome', {
+            id: id
+        }, function (data) {
+            if (data.ret === 0) {
+                window.location.href = '/background/productlist?type=' + type;
+            } else {
+                alert('移除失败:' + data.msg);
+            }
+        });
+    }
 </script>
