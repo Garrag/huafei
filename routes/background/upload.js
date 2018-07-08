@@ -1,13 +1,12 @@
 var fs = require('fs');
 var express = require('express');
-var multiparty = require('multiparty');
 var multer = require('multer')
 var path = require('path')
 var crypto = require('crypto');
 var mysql = require('./../dao/mysql.js');
 
-var _root = path.join('public', 'images', 'product_list'); //, 'product_list'
-var _temp = path.join('public', 'tempImg');
+var _root = path.join(__dirname, 'public', 'images', 'product_list'); //, 'product_list'
+var _temp = path.join(__dirname, 'public', 'tempImg');
 
 var router = express.Router();
 var upload = multer({
