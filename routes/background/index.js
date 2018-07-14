@@ -71,7 +71,7 @@ router.all('/editproduct', function (req, res, next) {
         if (err) console.log(err);
         else {
             if (rs.length > 0) {
-                // console.log(rs[0]);
+                console.log(rs[0]);
                 html_data.productData = rs[0];
                 res.render(_root + "index", html_data);
             }
