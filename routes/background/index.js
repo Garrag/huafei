@@ -62,6 +62,21 @@ router.all('/newproduct', function (req, res, next) {
     html_data.viewType = 'product_new';
     res.render(_root + "index", html_data);
 });
+//编辑公司信息
+router.all('/editcompany', function (req, res, next) {
+    let type = req.query.type;
+    console.log(type);
+    if (type == 'info') {
+        html_data.viewType = 'company_info';
+        res.render(_root + "index", html_data);
+    } else if (type == 'link') {
+        html_data.viewType = 'company_link';
+        res.render(_root + "index", html_data);
+    } else if (type == 'partner') {
+        html_data.viewType = 'company_partner';
+        res.render(_root + "index", html_data);
+    }
+});
 //编辑产品
 router.all('/editproduct', function (req, res, next) {
     var id = req.query.id;

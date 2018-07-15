@@ -14,14 +14,11 @@
             <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
                 <div class="am-offcanvas-bar admin-offcanvas-bar">
                     <ul class="am-list admin-sidebar-list">
-                        <!-- <li>
-                            <a href="###" id="mangaer_product_img">
-                                <span class="am-icon-th"></span> 图片素材管理</a>
-                        </li> -->
                         <li>
                             <a href="/background/newproduct" id="mangaer_product_type">
                                 <span class="am-icon-th"></span> 创建新产品</a>
                         </li>
+
                         <li class="admin-parent">
                             <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}">
                                 <span class="am-icon-file"></span>
@@ -38,6 +35,18 @@
                                     </li>
                                     <%}%>
                             </ul>
+                        </li>
+                        <li>
+                            <a href="/background/editcompany?type=info" id="mangaer_company_info">
+                                <span class="am-icon-th"></span> 公司简介</a>
+                        </li>
+                        <li>
+                            <a href="/background/editcompany?type=link" id="mangaer_company_link">
+                                <span class="am-icon-th"></span> 联系方式</a>
+                        </li>
+                        <li>
+                            <a href="/background/editcompany?type=partner" id="mangaer_company_partner">
+                                <span class="am-icon-th"></span> 合作伙伴</a>
                         </li>
                     </ul>
 
@@ -57,11 +66,17 @@
                 <div id="bg-content " style="min-height: 1000px ">
                     <%if(viewType &&viewType == 'product_list'){%>
                         <% include ./bg_product_list.ejs%>
-                            <%}else if(viewType &&viewType == 'product_new'){%>
-                                <% include ./bg_product_new.ejs%>
-                                    <%}else if(viewType &&viewType == 'product_edit'){%>
-                                        <% include ./bg_product_edit.ejs%>
-                                            <%}%>
+                    <%}else if(viewType &&viewType == 'product_new'){%>
+                        <% include ./bg_product_new.ejs%>
+                    <%}else if(viewType &&viewType == 'product_edit'){%>
+                        <% include ./bg_product_edit.ejs%>
+                    <%}else if(viewType &&viewType == 'company_info'){%>
+                        <% include ./bg_company_info.ejs%>
+                    <%}else if(viewType &&viewType == 'company_link'){%>
+                        <% include ./bg_company_link.ejs%>
+                    <%}else if(viewType &&viewType == 'company_partner'){%>
+                        <% include ./bg_company_partner.ejs%>
+                    <%}%>
                 </div>
             </div>
             <!-- content end -->
