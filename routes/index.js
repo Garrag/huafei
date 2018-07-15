@@ -51,20 +51,37 @@ var splitFun = function (newJson, type) {
     return listData
 }
 
+let getHtmlData = (callback = () => {}) => {
+    mysql.query("select * from base_info where id = 0", function (err, rs) {
+        let base_info = rs[0];
+        base_info.infoArr = base_info.info.split('。');
+        base_info.contactArr = base_info.contact.split('|');
+        callback(base_info)
+    });
+};
+
+
 //首页
 router.all('/', function (req, res, next) {
     mysql.query("select * from products where home = 1", function (err, rs) {
-        res.render('home', {
-            listData: rs
-        });
+        let homeProducts = rs;
+        getHtmlData((base_info)=>{
+            res.render('home', {
+                listData: homeProducts,
+                base_info: base_info,
+            });
+        })
     });
 });
 //对应产品页面
 router.all('/product', function (req, res, next) {
     var type = req.query.index || 1;
     mysql.escapingQuery("select * from products where type = ?", [type], function (err, rs) {
-        var listData = splitFun(rs, type)
-        res.render('index', listData);
+        var listData = splitFun(rs, type);
+        getHtmlData((base_info) => {
+            listData.base_info = base_info;
+            res.render('index', listData);
+        });
     });
 });
 //产品信息页面
@@ -75,16 +92,23 @@ router.all('/product_info', function (req, res, next) {
         var data = {
             infoData: rs[0]
         };
-        res.render('product_info', data);
+        getHtmlData((base_info) => {
+            data.base_info = base_info;
+            res.render('product_info', data);
+        })
     });
 });
 //关于页面
 router.all('/about', function (req, res, next) {
-    res.render('about', {});
+    getHtmlData((base_info) => {
+        res.render('about', { base_info: base_info});
+    })
 });
 //合作伙伴页面
 router.all('/hzhb', function (req, res, next) {
-    res.render('hzhb', {});
+    getHtmlData((base_info) => {
+        res.render('hzhb', { base_info: base_info });
+    })
 });
 
 module.exports = router;

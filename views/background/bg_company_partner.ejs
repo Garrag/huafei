@@ -2,8 +2,27 @@
 <form id="jx_new_form" style="margin-top: 50px; padding-left: 5%; padding-right: 5%" class="am-form">
     <div class="am-form-group">
         <label for="doc-ta-1">合作伙伴</label>
-        <textarea class="" rows="5" id="info"></textarea>
+        <textarea class="" rows="5" id="company_partner"><%=base_info.partner%></textarea>
     </div>
     <br>
-    <button onclick="" type="button" class="am-btn am-btn-danger am-btn-sm">保存</button>
+    <button onclick="editCompanyPartner()" type="button" class="am-btn am-btn-danger am-btn-sm">保存</button>
 </form>
+
+<script>
+    var editCompanyPartner = function () {
+        var info = $('#company_partner').val();
+        $.post('/background/editcompany',
+            {
+                type: 'partner',
+                partner: info,
+            },
+            function (data) {
+                if (data.ret === 0) {
+                    alert('更新成功!');
+                    window.location.reload();
+                } else {
+                    alert('更新失败:' + data.msg);
+                }
+            });
+    }
+</script>

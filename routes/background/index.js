@@ -9,11 +9,42 @@ var html_data = {
     viewType: '',
     types: [],
 }
-//读取数据 拿到列表
-mysql.query("select * from product_type", function (err, rs) {
-    html_data.types = rs;
-});
 
+let updateTypes = (callback = () => { }) => {
+    //读取数据 拿到列表
+    mysql.query("select * from product_type", function (err, rs) {
+        if (err) {
+            console.log(err);
+            callback(false, err);
+            return;
+        }
+        html_data.types = rs;
+        callback(true, rs);
+    });
+
+};
+
+let updateBaseInfo = (callback = () => { }) => {
+    //拿到公司的基本信息
+    mysql.query("select * from base_info where id = 0", function (err, rs) {
+        if (err) {
+            console.log(err);
+            callback(false, err)
+            return;
+        } else {
+            if (rs.length > 0) {
+                html_data.base_info = rs[0];
+                callback(true, rs[0]);
+            } else {
+                callback(false, err)
+            }
+        }
+    });
+};
+
+//更新公司数据
+updateTypes();
+updateBaseInfo();
 /**
  * 权限控制
  */
@@ -62,21 +93,73 @@ router.all('/newproduct', function (req, res, next) {
     html_data.viewType = 'product_new';
     res.render(_root + "index", html_data);
 });
-//编辑公司信息
+//查看公司信息
 router.all('/editcompany', function (req, res, next) {
-    let type = req.query.type;
-    console.log(type);
+    let type = req.query.type || req.body.type;
+
+    let info = req.body.info;   //需要更新的信息
+    let link = req.body.link;
+    let partner = req.body.partner;
+
+
+
     if (type == 'info') {
         html_data.viewType = 'company_info';
-        res.render(_root + "index", html_data);
+        if (info) {
+            mysql.escapingQuery('update base_info set info=? where id = 0', [info], (err, rs) => {
+                if (err) console.log(err);
+                else {
+                    html_data.base_info.info = info;
+                    res.jsonp({
+                        ret: 0,
+                        msg: "ok",
+                    })
+                    // res.render(_root + "index", html_data);        
+                }
+            });
+        } else {
+            res.render(_root + "index", html_data);
+        }
     } else if (type == 'link') {
         html_data.viewType = 'company_link';
-        res.render(_root + "index", html_data);
+        if(link){
+            mysql.escapingQuery('update base_info set contact=? where id = 0', [link], (err, rs) => {
+                if (err) console.log(err);
+                else {
+                    html_data.base_info.contact = link;
+                    res.jsonp({
+                        ret: 0,
+                        msg: "ok",
+                    })
+                    // res.render(_root + "index", html_data);
+                }
+            });
+        }else {
+            res.render(_root + "index", html_data);
+        }
     } else if (type == 'partner') {
         html_data.viewType = 'company_partner';
-        res.render(_root + "index", html_data);
+        if (partner) {
+            mysql.escapingQuery('update base_info set partner=? where id = 0', [partner], (err, rs) => {
+                if (err) console.log(err);
+                else {
+                    html_data.base_info.partner = partner;
+                    res.jsonp({
+                        ret: 0,
+                        msg: "ok",
+                    })
+                    // res.render(_root + "index", html_data);
+                }
+            });
+        }else {
+            res.render(_root + "index", html_data);
+        }
     }
 });
+router.post('/editcompany', function (req, res, next) {
+    let type
+});
+
 //编辑产品
 router.all('/editproduct', function (req, res, next) {
     var id = req.query.id;
