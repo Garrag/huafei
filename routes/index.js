@@ -50,13 +50,16 @@ var splitFun = function (newJson, type) {
     }
     return listData
 }
-
+//获取基本数据
 let getHtmlData = (callback = () => {}) => {
     mysql.query("select * from base_info where id = 0", function (err, rs) {
         let base_info = rs[0];
         base_info.infoArr = base_info.info.split('。');
         base_info.contactArr = base_info.contact.split('|');
-        callback(base_info)
+        mysql.query("select * from product_type", function (err, rs) {
+            base_info.typesArr = rs;
+            callback(base_info)
+        });
     });
 };
 

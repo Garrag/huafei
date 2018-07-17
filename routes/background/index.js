@@ -42,6 +42,29 @@ let updateBaseInfo = (callback = () => { }) => {
     });
 };
 
+let updateDataByType = (type = '', name = '', callback) => {
+    callback = callback || function () { };
+    mysql.escapingQuery("update product_type set name = ? where type = ?", [name, type], function (err, rs) {
+        if (err) {
+            callback(false, '数据库语句执行失败：' + err);
+        } else {
+            if (rs.affectedRows > 0) {
+                callback(true);
+            } else {
+                callback(false, '数据库语句执行失败：没有发现对应的type')
+            }
+        }
+    });
+}
+
+let getDataByType = (type) => {
+    for (let item of html_data.types) {
+        if (item.type == type) {
+            return item;
+        }
+    }
+}
+
 //更新公司数据
 updateTypes();
 updateBaseInfo();
@@ -88,6 +111,46 @@ router.post('/login', function (req, res, next) {
 router.all('/index', function (req, res, next) {
     res.render(_root + "index", html_data);
 });
+//查看类型
+router.all('/managertype', function (req, res, next) {
+    html_data.viewType = 'type_manager';
+    mysql.query("select * from product_type", function (err, rs) {
+        html_data.types = rs;
+        res.render(_root + "index", html_data);
+    });
+});
+//更新所有类型
+router.all('/updatetypes', function (req, res, next) {
+    //找出差异
+    var changeTypes = [];
+    for (var i = 1; i <= 20; i++) {
+        let typeData = getDataByType(i);
+        let name = req.body['type_' + i];
+        if (typeData.name != name) {
+            changeTypes.push({
+                type: typeData.type,
+                name: name
+            });
+        }
+    }
+    for (let i = 0; i < changeTypes.length; i++) {
+        let item = changeTypes[i];
+        if (i == changeTypes.length - 1) {
+            updateDataByType(item.type, item.name, (status, msg) => {
+                if(status){
+                    res.jsonp({
+                        ret: 0,
+                        msg: "ok",
+                    })
+                }else {
+                    console.log(msg);
+                }
+            });
+        } else {
+            updateDataByType(item.type, item.name);
+        }
+    }
+});
 //创建新产品
 router.all('/newproduct', function (req, res, next) {
     html_data.viewType = 'product_new';
@@ -122,7 +185,7 @@ router.all('/editcompany', function (req, res, next) {
         }
     } else if (type == 'link') {
         html_data.viewType = 'company_link';
-        if(link){
+        if (link) {
             mysql.escapingQuery('update base_info set contact=? where id = 0', [link], (err, rs) => {
                 if (err) console.log(err);
                 else {
@@ -134,7 +197,7 @@ router.all('/editcompany', function (req, res, next) {
                     // res.render(_root + "index", html_data);
                 }
             });
-        }else {
+        } else {
             res.render(_root + "index", html_data);
         }
     } else if (type == 'partner') {
@@ -151,15 +214,11 @@ router.all('/editcompany', function (req, res, next) {
                     // res.render(_root + "index", html_data);
                 }
             });
-        }else {
+        } else {
             res.render(_root + "index", html_data);
         }
     }
 });
-router.post('/editcompany', function (req, res, next) {
-    let type
-});
-
 //编辑产品
 router.all('/editproduct', function (req, res, next) {
     var id = req.query.id;
@@ -198,7 +257,6 @@ router.all('/productlist/', function (req, res, next) {
         }
     });
 });
-
 //创建商品
 router.post('/createProduct', function (req, res, next) {
     let sqlStr = `INSERT INTO products(type, name, img, other_name, en_name, formula, cas, feature, use_info, how_use) VALUES( ? , ? , ?, ?, ?, ?, ?, ?, ?, ?);`

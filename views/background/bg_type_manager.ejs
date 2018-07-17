@@ -1,0 +1,31 @@
+<form id="jx_new_form" style="margin-top: 50px; padding-left: 5%; padding-right: 5%" class="am-form">
+    <%for(var i=0; i < types.length; i++){%>
+    <div class="am-form-group">
+        <label for="doc-ipt-email-1">类型ID:<%=types[i].type%></label>
+        <input type="text" id="type_<%=types[i].type%>" value="<%=types[i].name%>">
+    </div>
+    <%}%>
+    <br>
+    <button onclick="editProductTypes()" type="button" class="am-btn am-btn-danger am-btn-sm">保存</button>
+</form>
+
+<script>
+    var editProductTypes = function () {
+        var data = {};
+        for(var i=1; i<=20; i++){
+            var key = 'type_' + i;
+            data[key] = $('#' + key).val();
+        }
+        console.log(data);
+        $.post('/background/updatetypes',
+            data,
+            function (data) {
+                if (data.ret === 0) {
+                    alert('更新成功!');
+                    window.location.reload();
+                } else {
+                    alert('更新失败:' + data.msg);
+                }
+            });
+    }
+</script>

@@ -18,11 +18,15 @@
                 <div>产品</div>
             </a>
             <ul class='dev-nav-more'>
-                <a href="./product?index=1"><li style="border-radius: 8px 8px 0 0;">工业化工原料</li></a>
+                <!-- <a href="./product?index=1"><li style="border-radius: 8px 8px 0 0;">工业化工原料</li></a>
                 <a href="./product?index=2"><li>环保处理原料</li></a>
                 <a href="./product?index=3"><li>食用化工原料</li></a>
                 <a href="./product?index=4"><li>化学试剂仪器</li></a>
-                <a href="./product?index=5"><li style="border-radius: 0 0 8px 8px;">艺术涂料</li></a>
+                <a href="./product?index=5"><li style="border-radius: 0 0 8px 8px;">艺术涂料</li></a> -->
+                <%for(var i=0; i < base_info.typesArr.length; i++){
+                    if(base_info.typesArr[i].name){%>
+                    <a href="./product?index=<%=base_info.typesArr[i].type%>"><li><%=base_info.typesArr[i].name%></li></a>
+                <%}}%>
             </ul>
         </div>
         <div class='dev-nav-split'>

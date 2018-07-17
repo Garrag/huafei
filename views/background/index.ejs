@@ -26,15 +26,20 @@
                                 <span class="am-icon-angle-right am-fr am-margin-right"></span>
                             </a>
                             <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
-                                <% for(var i=0; i<types.length; i++ ){ %>
+                                <% for(var i=0; i<types.length; i++ ){ 
+                                    if(types[i].name){%>
                                     <li>
                                         <a href="/background/productlist?type=<%=i+1%>">
                                             <span class="am-icon-check "></span>
                                             <%=types[i].name%>
                                         </a>
                                     </li>
-                                    <%}%>
+                                    <%}}%>
                             </ul>
+                        </li>
+                        <li>
+                            <a href="/background/managertype" id="mangaer_product_type">
+                                <span class="am-icon-th"></span> 类型管理</a>
                         </li>
                         <li>
                             <a href="/background/editcompany?type=info" id="mangaer_company_info">
@@ -76,6 +81,8 @@
                         <% include ./bg_company_link.ejs%>
                     <%}else if(viewType &&viewType == 'company_partner'){%>
                         <% include ./bg_company_partner.ejs%>
+                    <%}else if(viewType &&viewType == 'type_manager'){%>
+                        <% include ./bg_type_manager.ejs%>
                     <%}%>
                 </div>
             </div>
