@@ -5,8 +5,12 @@
 <!-- 导航条 -->
 <div class='dev-nav'>
     <div class='dev-nav-list'>
+        <%if(select == "index"){%>
+        <div class='dev-nav-item' style="background-color: #4ba4be">
+        <%}else {%>
         <div class='dev-nav-item'>
-            <a class='dev-nav-title' href="./">
+        <%}%>
+            <a class='dev-nav-title'  href="./">
                 <div>首页</div>
             </a>
         </div>
@@ -32,7 +36,11 @@
         <div class='dev-nav-split'>
             <div class='dev-nav-split-content'></div>
         </div>
-        <div class='dev-nav-item' >
+        <%if(select == "hzhb"){%>
+        <div class='dev-nav-item' style="background-color: #4ba4be">
+        <%}else {%>
+        <div class='dev-nav-item'>
+        <%}%>
             <a class='dev-nav-title' href="./hzhb">
                 <div>合作伙伴</div>
             </a>
@@ -40,7 +48,11 @@
         <div class='dev-nav-split'>
             <div class='dev-nav-split-content'></div>
         </div>
-        <div class='dev-nav-item' >
+        <%if(select == "about"){%>
+        <div class='dev-nav-item' style="background-color: #4ba4be">
+        <%}else {%>
+        <div class='dev-nav-item'>
+        <%}%>
             <a class='dev-nav-title' href="./about">
                 <div>联系我们</div>
             </a>

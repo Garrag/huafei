@@ -58,22 +58,23 @@ let getHtmlData = (callback = () => {}) => {
         base_info.contactArr = base_info.contact.split('|');
         mysql.query("select * from product_type", function (err, rs) {
             base_info.typesArr = rs;
-            callback(base_info)
+            mysql.query("select * from products where home = 1", function (err, rs) {
+                base_info.homeProducts = rs;
+                callback(base_info)
+            });
         });
     });
 };
 
-
 //首页
 router.all('/', function (req, res, next) {
-    mysql.query("select * from products where home = 1", function (err, rs) {
-        let homeProducts = rs;
-        getHtmlData((base_info)=>{
-            res.render('home', {
-                listData: homeProducts,
-                base_info: base_info,
-            });
-        })
+    var type = 1;
+    mysql.escapingQuery("select * from products where type = ?", [type], function (err, rs) {
+        var listData = splitFun(rs, type);
+        getHtmlData((base_info) => {
+            listData.base_info = base_info;
+            res.render('index', listData);
+        });
     });
 });
 //对应产品页面

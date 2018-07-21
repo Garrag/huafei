@@ -11,4 +11,29 @@
             <%}%>
         </div>
     </div>
+    <div class="right-contnet-dev" style="min-height: 400px;width:960px; display: table-cell;vertical-align: top;">
+        <div class="left-contnet-dev-title">
+            <div class="ui-label-1"></div>
+            <div class="left-contnet-dev-title-content">推荐产品</div>
+            <div class="ui-label-1"></div>
+        </div>
+        <div style="padding:10px; margin: 5px auto;border: 1px solid rgb(204, 204, 204);border-radius: 6px;">
+            <div class="swiper-container swiper-container-horizontal" id="slider2">
+                <div class="swiper-wrapper" style="transform: translate3d(-578.75px, 0px, 0px); transition-duration: 0ms;">
+                    <%for(var i=0; i < base_info.homeProducts.length; i++){%>
+                        <div class="swiper-slide list-item">
+                            <div>
+                                <a href="./product_info?id=<%=base_info.homeProducts[i].id%>&type=<%=base_info.homeProducts[i].type%>">
+                                    <img style="height: 200px;" src="http://www.csyazhongyue.com/images/product_list/<%=base_info.homeProducts[i].img%>" class="img-responsive" alt="暂无图片">
+                                    <p style="text-align:center;">
+                                        <%=base_info.homeProducts[i].name%>
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                        <%}%>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
