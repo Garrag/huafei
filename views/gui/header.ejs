@@ -8,7 +8,7 @@
         <%if(select == "index"){%>
         <div class='dev-nav-item' style="background-color: #4ba4be">
         <%}else {%>
-        <div class='dev-nav-item'>
+        <div class='dev-nav-item' style="background-color: #4ba4be">
         <%}%>
             <a class='dev-nav-title'  href="./">
                 <div>首页</div>
@@ -17,19 +17,18 @@
         <div class='dev-nav-split'>
             <div class='dev-nav-split-content'></div>
         </div>
-        <div class='dev-nav-item' >
+        <div class='dev-nav-item' style="background-color: #4ba4be">
             <a class='dev-nav-title'>
                 <div>产品</div>
             </a>
             <ul class='dev-nav-more'>
-                <!-- <a href="./product?index=1"><li style="border-radius: 8px 8px 0 0;">工业化工原料</li></a>
-                <a href="./product?index=2"><li>环保处理原料</li></a>
-                <a href="./product?index=3"><li>食用化工原料</li></a>
-                <a href="./product?index=4"><li>化学试剂仪器</li></a>
-                <a href="./product?index=5"><li style="border-radius: 0 0 8px 8px;">艺术涂料</li></a> -->
                 <%for(var i=0; i < base_info.typesArr.length; i++){
                     if(base_info.typesArr[i].name){%>
-                    <a href="./product?index=<%=base_info.typesArr[i].type%>"><li><%=base_info.typesArr[i].name%></li></a>
+                    <a href="./product?index=<%=base_info.typesArr[i].type%>&page=1">
+                        <li>
+                            <%=base_info.typesArr[i].name%>
+                        </li>
+                    </a>
                 <%}}%>
             </ul>
         </div>
@@ -39,7 +38,7 @@
         <%if(select == "hzhb"){%>
         <div class='dev-nav-item' style="background-color: #4ba4be">
         <%}else {%>
-        <div class='dev-nav-item'>
+        <div class='dev-nav-item' style="background-color: #4ba4be">
         <%}%>
             <a class='dev-nav-title' href="./hzhb">
                 <div>合作伙伴</div>
@@ -51,7 +50,7 @@
         <%if(select == "about"){%>
         <div class='dev-nav-item' style="background-color: #4ba4be">
         <%}else {%>
-        <div class='dev-nav-item'>
+        <div class='dev-nav-item' style="background-color: #4ba4be">
         <%}%>
             <a class='dev-nav-title' href="./about">
                 <div>联系我们</div>

@@ -11,10 +11,12 @@
                     <% for(var i=0; i < list1.length; i++){ %>
                         <a href="./product_info?id=<%=list1[i].id%>&type=<%=list1[i].type%>">
                             <li>
-                                <div>
+                                <div class="list-dev-content-li-item">
                                     <img class="list-dev-content-li-icon" src="http://www.csyazhongyue.com/images/product_list/<%=list1[i].img%>">
                                 </div>
-                                <span class="list-dev-content-li-spane"><%=list1[i].name%></span>
+                                <span class="list-dev-content-li-spane">
+                                    <%=list1[i].name%>
+                                </span>
                             </li>
                         </a>
                         <%}%>
@@ -28,7 +30,9 @@
                                 <div>
                                     <img class="list-dev-content-li-icon" src="http://www.csyazhongyue.com/images/product_list/<%=list2[i].img%>">
                                 </div>
-                                <span class="list-dev-content-li-spane"><%=list2[i].name%></span>
+                                <span class="list-dev-content-li-spane">
+                                    <%=list2[i].name%>
+                                </span>
                             </li>
                         </a>
                         <%}%>
@@ -42,7 +46,9 @@
                                 <div>
                                     <img class="list-dev-content-li-icon" src="http://www.csyazhongyue.com/images/product_list/<%=list3[i].img%>">
                                 </div>
-                                <span class="list-dev-content-li-spane"><%=list3[i].name%></span>
+                                <span class="list-dev-content-li-spane">
+                                    <%=list3[i].name%>
+                                </span>
                             </li>
                         </a>
                         <%}%>
@@ -56,12 +62,19 @@
                                 <div>
                                     <img class="list-dev-content-li-icon" src="http://www.csyazhongyue.com/images/product_list/<%=list4[i].img%>">
                                 </div>
-                                <span class="list-dev-content-li-spane"><%=list4[i].name%></span>
+                                <span class="list-dev-content-li-spane">
+                                    <%=list4[i].name%>
+                                </span>
                             </li>
                         </a>
                         <%}%>
                 </ui>
             </div>
+        </div>
+
+        <div class="list-page-btn">
+            <a href="./product?index=<%=currentType%>&page=<%=currentPage - 1%>">上一页</a>
+            <a href="./product?index=<%=currentType%>&page=<%=currentPage + 1%>">下一页</a>
         </div>
     </div>
 </div>

@@ -79,7 +79,7 @@ p {
 }
 
 .dev-nav-split-content {
-    border-left: 1.2px dashed black;
+    border-left: 1.2px dashed #4ba4be;
     padding-top: 10px;
     height: 30px;
 }
@@ -95,7 +95,7 @@ p {
 .dev-nav-more {
     list-style: none;
     display: none;
-    position:absolute;
+    position: absolute;
     padding: 0;
     z-index: 100;
 }
@@ -114,6 +114,7 @@ p {
 .dev-nav-more li:hover {
     background: rgb(133, 173, 75);
 }
+
 .dev-nav-title {
     color: black;
     width: 150px;
@@ -121,13 +122,13 @@ p {
     line-height: 41px;
 }
 
-.dev-nav-title div{
+.dev-nav-title div {
     width: 100%;
     height: 100%;
 }
 
 .dev-nav-item:hover {
-    background-color:rgb(193, 193, 193);
+    background-color: rgb(193, 193, 193);
 }
 
 .left-content-node {
@@ -343,12 +344,9 @@ p {
     min-height: 40px;
     list-style: none;
     padding-top: 10px;
-    /* line-height: 40px; */
-    padding-left: 30px;
-    /* font-weight: 700; */
     border-bottom: 1px dashed rgb(193, 193, 193);
-    /* border: 1px solid red; */
     position: relative;
+    text-align: center;
 }
 
 /* .list-dev-content li::before {
@@ -370,6 +368,21 @@ p {
     padding: 10px;
 }
 
-.list-dev-content-li-icon{
+.list-dev-content-li-icon {
     height: 100px;
+}
+
+.list-dev-content-li-spane {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.list-page-btn {
+    text-align: center;
+    margin: 40px auto;
+}
+.list-page-btn a {
+    padding-left: 20px;
+    padding-right: 20px;
 }

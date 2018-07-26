@@ -80,13 +80,27 @@ router.all('/', function (req, res, next) {
 //对应产品页面
 router.all('/product', function (req, res, next) {
     var type = req.query.index || 1;
-    mysql.escapingQuery("select * from products where type = ?", [type], function (err, rs) {
-        var listData = splitFun(rs, type);
-        getHtmlData((base_info) => {
-            listData.base_info = base_info;
-            res.render('index', listData);
+    var page = req.query.page || 1;
+    mysql.escapingQuery('select count(*) from products where type = ?', [type], function (err, rs) {
+        var count = rs[0]['count(*)'];
+        var pageSize = 12;
+        var totalPage = Math.ceil(count / pageSize);
+        page = Math.min(totalPage, page);
+        page = Math.max(page, 1)
+        var startNum = (page - 1) * pageSize;
+        mysql.escapingQuery("select * from products where type = ? limit ?, ?", [type, startNum, pageSize], function (err, rs) {
+            var listData = splitFun(rs, type);
+            listData.currentType = type;
+            listData.currentPage = page;
+            getHtmlData((base_info) => {
+                listData.base_info = base_info;
+                res.render('index', listData);
+            });
         });
-    });
+    })
+
+
+
 });
 //产品信息页面
 router.all('/product_info', function (req, res, next) {
@@ -105,13 +119,17 @@ router.all('/product_info', function (req, res, next) {
 //关于页面
 router.all('/about', function (req, res, next) {
     getHtmlData((base_info) => {
-        res.render('about', { base_info: base_info});
+        res.render('about', {
+            base_info: base_info
+        });
     })
 });
 //合作伙伴页面
 router.all('/hzhb', function (req, res, next) {
     getHtmlData((base_info) => {
-        res.render('hzhb', { base_info: base_info });
+        res.render('hzhb', {
+            base_info: base_info
+        });
     })
 });
 
