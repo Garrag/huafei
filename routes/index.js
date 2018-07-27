@@ -68,14 +68,25 @@ let getHtmlData = (callback = () => {}) => {
 
 //首页
 router.all('/', function (req, res, next) {
-    var type = 1;
-    mysql.escapingQuery("select * from products where type = ?", [type], function (err, rs) {
-        var listData = splitFun(rs, type);
-        getHtmlData((base_info) => {
-            listData.base_info = base_info;
-            res.render('index', listData);
+    var type = req.query.index || 1;
+    var page = req.query.page || 1;
+    mysql.escapingQuery('select count(*) from products where type = ?', [type], function (err, rs) {
+        var count = rs[0]['count(*)'];
+        var pageSize = 12;
+        var totalPage = Math.ceil(count / pageSize);
+        page = Math.min(totalPage, page);
+        page = Math.max(page, 1)
+        var startNum = (page - 1) * pageSize;
+        mysql.escapingQuery("select * from products where type = ? limit ?, ?", [type, startNum, pageSize], function (err, rs) {
+            var listData = splitFun(rs, type);
+            listData.currentType = type;
+            listData.currentPage = page;
+            getHtmlData((base_info) => {
+                listData.base_info = base_info;
+                res.render('index', listData);
+            });
         });
-    });
+    })
 });
 //对应产品页面
 router.all('/product', function (req, res, next) {
@@ -98,9 +109,6 @@ router.all('/product', function (req, res, next) {
             });
         });
     })
-
-
-
 });
 //产品信息页面
 router.all('/product_info', function (req, res, next) {
