@@ -163,6 +163,7 @@ router.all('/editcompany', function (req, res, next) {
     let info = req.body.info;   //需要更新的信息
     let link = req.body.link;
     let partner = req.body.partner;
+    let about = req.body.about;
 
 
 
@@ -194,7 +195,22 @@ router.all('/editcompany', function (req, res, next) {
                         ret: 0,
                         msg: "ok",
                     })
-                    // res.render(_root + "index", html_data);
+                }
+            });
+        } else {
+            res.render(_root + "index", html_data);
+        }
+    } else if (type == 'about') {
+        html_data.viewType = 'company_about';
+        if (about) {
+            mysql.escapingQuery('update base_info set about=? where id = 0', [about], (err, rs) => {
+                if (err) console.log(err);
+                else {
+                    html_data.base_info.about = about;
+                    res.jsonp({
+                        ret: 0,
+                        msg: "ok",
+                    })
                 }
             });
         } else {

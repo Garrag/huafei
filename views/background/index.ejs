@@ -53,6 +53,10 @@
                             <a href="/background/editcompany?type=partner" id="mangaer_company_partner">
                                 <span class="am-icon-th"></span> 合作伙伴</a>
                         </li>
+                        <li>
+                            <a href="/background/editcompany?type=about" id="mangaer_company_about">
+                                <span class="am-icon-th"></span> 关于我们</a>
+                        </li>
                     </ul>
 
                     <div class="am-panel am-panel-default admin-sidebar-panel " style="opacity: 0 ">
@@ -79,6 +83,8 @@
                         <% include ./bg_company_info.ejs%>
                     <%}else if(viewType &&viewType == 'company_link'){%>
                         <% include ./bg_company_link.ejs%>
+                    <%}else if(viewType &&viewType == 'company_about'){%>
+                        <% include ./bg_company_about.ejs%>
                     <%}else if(viewType &&viewType == 'company_partner'){%>
                         <% include ./bg_company_partner.ejs%>
                     <%}else if(viewType &&viewType == 'type_manager'){%>

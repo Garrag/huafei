@@ -25,11 +25,16 @@
                 <div class="ui-label-1"></div>
             </div>  
             <div style="padding:10px;">
-                <p>长沙亚中粤化工贸易有限公司</p>
+                <!-- <p>长沙亚中粤化工贸易有限公司</p>
                 <p>联系人：周女士</p>
                 <p>电话:18574399662</p>
                 <p>邮箱：295770229@qq.com</p>
-                <p>地址：湖南省长沙市雨花区长沙大道566号至雅大厦</p>
+                <p>地址：湖南省长沙市雨花区长沙大道566号至雅大厦</p> -->
+                <%for(var i=0; i < base_info.about.length; i++){%>
+                <p>
+                    <%=base_info.about[i]%>
+                </p>
+                <%}%>
             </div>
         </div>
     </div>
